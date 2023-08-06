@@ -1,0 +1,149 @@
+.aboutMe {
+	margin: 0;
+	width: 1280px;
+	padding-top: 112px;
+}
+
+@media screen and (max-width: 1279px) {
+	.aboutMe {
+		width: 768px;
+		padding-top: 90px;
+	}
+}
+
+@media screen and (max-width: 767px) {
+	.aboutMe {
+	}
+}
+
+.aboutMe_container {
+	margin: auto;
+	margin-top: 66px;
+	width: 1140px;
+	display: grid;
+	grid-template-areas:
+		'title1 photo'
+		'title2 photo'
+		'paragraph1 photo'
+		'paragraph2 photo';
+	grid-template-columns: 600px 270px;
+	grid-column-gap: 270px;
+	grid-template-rows: 78px 45px 187px 17px;
+}
+
+@media screen and (max-width: 1279px) {
+	.aboutMe_container {
+		margin-top: 66px;
+		width: 668px;
+		grid-template-columns: 364px 255px;
+		grid-column-gap: 49px;
+		grid-template-rows: 56px 38px 196px 17px;
+	}
+}
+
+@media screen and (max-width: 767px) {
+	.aboutMe_container {
+	}
+}
+
+.aboutMe__title1 {
+	grid-area: title1;
+	margin: 0;
+	color: #fff;
+	font-size: 50px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 58px;
+	letter-spacing: -2px;
+}
+
+@media screen and (max-width: 1279px) {
+	.aboutMe__title1 {
+		font-size: 40px;
+		line-height: 40px;
+	}
+}
+
+@media screen and (max-width: 767px) {
+	.aboutMe__title1 {
+	}
+}
+
+.aboutMe__title2 {
+	grid-area: title2;
+	margin: 0;
+	color: #fff;
+	font-size: 18px;
+	font-style: normal;
+	font-weight: 500;
+	line-height: 20px;
+}
+
+@media screen and (max-width: 1279px) {
+	.aboutMe__title2 {
+		font-size: 12px;
+		line-height: 18px;
+	}
+}
+
+@media screen and (max-width: 767px) {
+	.aboutMe__title2 {
+	}
+}
+
+.aboutMe__paragraph1 {
+	grid-area: paragraph1;
+	margin: 0;
+	color: #fff;
+	font-size: 14px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 22px;
+}
+
+@media screen and (max-width: 1279px) {
+	.aboutMe__paragraph1 {
+		font-size: 12px;
+		line-height: 18px;
+	}
+}
+
+@media screen and (max-width: 767px) {
+	.aboutMe__paragraph1 {
+	}
+}
+
+.aboutMe__paragraph2 {
+	margin: 0 auto 0 0;
+	grid-area: paragraph2;
+	color: #fff;
+	font-size: 14px;
+	font-style: normal;
+	font-weight: 500;
+	line-height: normal;
+	text-decoration: none;
+	letter-spacing: 0.5px;
+}
+
+.aboutMe__paragraph2:hover {
+	opacity: 0.6;
+}
+
+.aboutMe__photo {
+	grid-area: photo;
+	width: 270px;
+	height: 327px;
+	border-radius: 10px;
+}
+
+@media screen and (max-width: 1279px) {
+	.aboutMe__photo {
+		width: 255px;
+		height: 307px;
+	}
+}
+
+@media screen and (max-width: 767px) {
+	.aboutMe__photo {
+	}
+}

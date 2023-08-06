@@ -1,0 +1,132 @@
+.aboutProject {
+	width: 1280px;
+	flex-shrink: 0;
+	padding-top: 113px;
+}
+
+@media screen and (max-width: 1279px) {
+	.aboutProject {
+		padding-top: 96px;
+		width: 768px;
+	}
+}
+
+@media screen and (max-width: 767px) {
+	.aboutProject {
+	}
+}
+
+.aboutProject__containerTitle {
+	margin-top: 70px;
+	display: grid;
+	grid-template-columns: 550px 550px;
+	justify-content: center;
+	grid-column-gap: 40px;
+}
+
+@media screen and (max-width: 1279px) {
+	.aboutProject__containerTitle {
+		margin-top: 70px;
+		grid-template-columns: 319px 319px;
+		grid-column-gap: 30px;
+	}
+}
+
+@media screen and (max-width: 767px) {
+	.aboutProject__containerTitle {
+	}
+}
+
+.aboutProject__title2 {
+	margin: 0;
+	color: #fff;
+	font-size: 20px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+	margin-bottom: 26px;
+	letter-spacing: 0.1px;
+}
+
+@media screen and (max-width: 1279px) {
+	.aboutProject__title2 {
+		margin-bottom: 20px;
+	}
+}
+
+@media screen and (max-width: 767px) {
+	.aboutProject__title2 {
+	}
+}
+
+.aboutProject__title3 {
+	margin: 0;
+	color: #fff;
+	font-size: 14px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 20px;
+	letter-spacing: 0.3px;
+}
+
+@media screen and (max-width: 1279px) {
+	.aboutProject__title3 {
+		font-size: 14px;
+	}
+}
+
+@media screen and (max-width: 767px) {
+	.aboutProject__title3 {
+	}
+}
+
+.aboutProject__containerParagraph {
+	margin: 0;
+	display: grid;
+	grid-template-columns: 228px 912px;
+	justify-content: center;
+	grid-column-gap: 0px;
+	margin-top: 110px;
+	margin-bottom: 97px;
+}
+
+@media screen and (max-width: 1279px) {
+	.aboutProject__containerParagraph {
+		margin-top: 87px;
+		grid-template-columns: 140px 528px;
+		margin-bottom: 80px;
+	}
+}
+
+@media screen and (max-width: 767px) {
+	.aboutProject__containerParagraph {
+	}
+}
+
+.aboutProject__paragraph {
+	margin: 0;
+	margin-bottom: 4px;
+	height: 36px;
+	color: #fff;
+	text-align: center;
+	font-size: 14px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.aboutProject__paragraph_color1 {
+	background-color: #3ddc84;
+	color: #000;
+}
+
+.aboutProject__paragraph_color2 {
+	background-color: #303030;
+}
+
+.aboutProject__paragraph_color3 {
+	color: #8b8b8b;
+}

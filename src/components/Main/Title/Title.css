@@ -1,0 +1,23 @@
+.title {
+	width: 1140px;
+	margin: 0 auto;
+	padding-bottom: 22px;
+	color: #fff;
+	font-size: 22px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+	border-bottom: solid 1px #dadada;
+}
+
+@media screen and (max-width: 1279px) {
+	.title {
+		width: 668px;
+		padding-bottom: 23px;
+	}
+}
+
+@media screen and (max-width: 767px) {
+	.title {
+	}
+}

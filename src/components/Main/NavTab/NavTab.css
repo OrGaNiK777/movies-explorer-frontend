@@ -1,0 +1,62 @@
+.navTab {
+	display: flex;
+	justify-content: center;
+	height: 66px;
+	background-color: #272727;
+}
+
+@media screen and (max-width: 1279px) {
+	.navTab {
+		max-width: 768px;
+	}
+}
+
+@media screen and (max-width: 767px) {
+	.navTab {
+	}
+}
+
+.navTab__container {
+	display: flex;
+	margin-left: 20px;
+}
+
+@media screen and (max-width: 1279px) {
+	.navTab__container {
+		margin-left: 34px;
+	}
+}
+
+@media screen and (max-width: 767px) {
+	.navTab__container {
+	}
+}
+
+.navTab__nav {
+	margin: 0;
+	padding: 0;
+	margin-top: 26px;
+	margin-left: 20px;
+	margin-right: 20px;
+	color: #fff;
+	font-size: 14px;
+	font-style: normal;
+	font-weight: 500;
+	line-height: 16px;
+	text-decoration-line: underline;
+}
+
+@media screen and (max-width: 1279px) {
+	.navTab__nav {
+		margin-top: 30px;
+		margin-left: 0px;
+		margin-right: 41px;
+		font-size: 13px;
+		letter-spacing: 0.5px;
+	}
+}
+
+@media screen and (max-width: 767px) {
+	.navTab__nav {
+	}
+}
