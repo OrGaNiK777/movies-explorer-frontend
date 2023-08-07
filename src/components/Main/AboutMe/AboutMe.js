@@ -7,20 +7,23 @@ function AboutMe() {
     <section className='aboutMe' id="aboutMeId">
       <Title textTitle="Студент" />
       <div className='aboutMe_container'>
-        <h2 className='aboutMe__title1'>Роман</h2>
+        <img className='aboutMe__photo' src={Photo} alt='Фото студента'></img>
+        <h2 className='aboutMe__title1'>Виталий</h2>
         <h3 className='aboutMe__title2'>Фронтенд-разработчик, 30 лет</h3>
         <p className='aboutMe__paragraph1'>
-          Я живу в Екатеринбурге, закончил УГГУ факальтет Горно-механический.
-          У меня есть жена.
-          Я люблю слушать музыку.
-          Недавно начал кодить.
-          С 2020 года работаю в Энерготрединговой компании системным администратором.
+          Я родился и живу в Саратове,
+          закончил факультет экономики СГУ.
+          У меня есть жена и дочь.
+          Я люблю слушать музыку,
+          а ещё увлекаюсь бегом. Недавно начал кодить.
+          С 2015 года работал в компании «СКБ Контур».
+          После того, как прошёл курс по веб-разработке,
+          начал заниматься фриланс-заказами и ушёл с постоянной работы.
         </p>
         <a className='aboutMe__paragraph2' href='https://github.com/OrGaNiK777'>
           Github
         </a>
-        <img className='aboutMe__photo' src={Photo} alt='Фото студента'></img></div>
-
+      </div>
     </section>
   )
 }

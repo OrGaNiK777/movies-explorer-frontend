@@ -15,7 +15,7 @@ function AboutProject() {
           добавление функциональности и финальные доработки.</h4>
         <h4 className='aboutProject__title3'>
           У каждого этапа был мягкий и жёсткий дедлайн,
-          которые нужно было<br /> соблюдать,
+          которые нужно было соблюдать,
           чтобы успешно защититься.</h4>
       </div>
       <div className='aboutProject__containerParagraph'>

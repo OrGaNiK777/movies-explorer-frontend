@@ -1,4 +1,5 @@
 .promo {
+	margin: auto;
 	display: flex;
 	width: 1280px;
 	background-color: #073042;
@@ -20,6 +21,8 @@
 @media screen and (max-width: 767px) {
 	.promo {
 		width: 320px;
+		height: 566px;
+		padding-top: 0px;
 	}
 }
 
@@ -48,7 +51,11 @@
 
 @media screen and (max-width: 767px) {
 	.promo__title {
-		width: 320px;
+		width: 300px;
+		font-size: 31px;
+		line-height: 39px;
+		top: -23px;
+		left: 6px;
 	}
 }
 
@@ -69,6 +76,9 @@
 
 @media screen and (max-width: 767px) {
 	.promo__img {
-		width: 320px;
+		width: 248.005px;
+		height: 248.004px;
+		right: 264px;
+		bottom: 23px;
 	}
 }

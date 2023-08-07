@@ -1,4 +1,5 @@
 .techs {
+	margin: auto;
 	width: 1280px;
 	flex-shrink: 0;
 	background-color: #272727;
@@ -16,6 +17,7 @@
 
 @media screen and (max-width: 767px) {
 	.techs {
+		width: 320px;
 	}
 }
 
@@ -38,6 +40,8 @@
 
 @media screen and (max-width: 767px) {
 	.techs__title2 {
+		margin-top: 50px;
+		font-size: 30px;
 	}
 }
 
@@ -62,6 +66,10 @@
 
 @media screen and (max-width: 767px) {
 	.techs__title3 {
+		margin-top: 13px;
+		width: 292px;
+		font-size: 11px;
+		line-height: 16px;
 	}
 }
 
@@ -81,6 +89,10 @@
 
 @media screen and (max-width: 767px) {
 	.techs_buttons {
+		display: block;
+		margin-top: 50px;
+		margin-left: 71px;
+		width: 60%;
 	}
 }
 
@@ -110,6 +122,8 @@
 
 @media screen and (max-width: 767px) {
 	.techs_button {
+		font-size: 12px;
+		margin-bottom: 10px;
 	}
 }
 
