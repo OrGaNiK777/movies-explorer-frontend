@@ -1,12 +1,12 @@
 import "./PageWithForm.css"
 
-export default function PageWithForm({
+function PageWithForm({
   name,
   handleSubmit,
   title,
   nameBtn,
   children,
-  question,
+  alternative,
 }) {
   return (
     <section className="access-page">
@@ -21,8 +21,12 @@ export default function PageWithForm({
         <button className="access-page__button-submit" type="submit">
           {nameBtn}
         </button>
-        {question}
+        <div className="access-page__alternative">
+          {alternative}
+        </div>
       </form>
     </section>
   );
 }
+
+export default PageWithForm

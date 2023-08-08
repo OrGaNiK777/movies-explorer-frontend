@@ -1,0 +1,100 @@
+.access-page {
+  margin: auto;
+	width: 1280px;
+	height: 570px;
+	margin: auto;
+	display: flex;
+	flex-direction: column;
+}
+.access-page__title {
+	margin: 0;
+	margin-top: 20px;
+	margin-left: 442px;
+	margin-bottom: 38px;
+	color: #fff;
+	font-size: 24px;
+	font-style: normal;
+	font-weight: 500;
+	line-height: normal;
+	letter-spacing: 1px;
+}
+
+.access-page__form {
+	margin: 0 auto;
+	display: flex;
+	flex-direction: column;
+	align-content: space-between;
+}
+.access-page__button-submit {
+	margin: 0;
+	width: 396px;
+	height: 45px;
+	border-radius: 3px;
+	background: #4285f4;
+	color: #fff;
+	text-align: center;
+	font-size: 14px;
+	font-style: normal;
+	font-weight: 500;
+	line-height: normal;
+	border: none;
+	position: fixed;
+	top: 551px;
+	letter-spacing: 0.5px;
+}
+
+.access-page__input {
+	width: 392px;
+	height: 45px;
+	border-radius: 8px;
+	background: #2f2f2f;
+	border: none;
+	margin-bottom: 6px;
+}
+
+.access-page__mes-error {
+	margin: 0;
+	color: #ee3465;
+	font-size: 10px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+	opacity: 0;
+	position: relative;
+	left: 0px;
+	transition: 0.3s;
+	display: inline-block;
+}
+
+.access-page__mes-error_acvive {
+	opacity: 1;
+}
+
+.access-page__input-content {
+	margin: 0;
+	margin-bottom: 9px;
+	color: #8b8b8b;
+	font-size: 10px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+}
+
+.access-page__alternative {
+	width: 396px;
+	position: fixed;
+	top: 597px;
+	right: auto;
+}
+
+.access-page__alternative-text {
+	margin: 0;
+	letter-spacing: 0.5px;
+	margin-top: 17px;
+	color: #8b8b8b;
+	text-align: center;
+	font-size: 14px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+}

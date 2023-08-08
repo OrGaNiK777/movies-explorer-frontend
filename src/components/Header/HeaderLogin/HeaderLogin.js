@@ -1,17 +1,16 @@
-import "./HeaderLogin.css"
 import headerlogo from "../../../images/logo.svg"
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 function HeaderLogin() {
   return (
-    <Link className="headerAuth__component">
+    <header className="header header_login">
       <NavLink to={"/"}>
         <img
-          className="header__logo"
+          className="header__logo header__logo_login"
           src={headerlogo}
           alt="Логотип"
         /></NavLink>
-    </Link>
+    </header>
 
   )
 }

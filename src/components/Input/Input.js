@@ -13,9 +13,11 @@ function Input({
   TextValid,
   type,
   useRef,
+  classNameInputСontent,
+  InputСontent
 }) {
   return (
-    <>
+    <><p className={classNameInputСontent}>{InputСontent}</p>
       <input
         className={classNameInput}
         id={id}

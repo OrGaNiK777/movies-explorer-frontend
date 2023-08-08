@@ -5,6 +5,7 @@ import { Route, Routes } from "react-router-dom";
 import Header from "./Header/Header"
 import Main from "./Main/Main"
 import Login from "./Login/Login"
+import Register from "./Register/Register"
 import Footer from "./Footer/Footer"
 
 
@@ -15,6 +16,7 @@ function App() {
   return (
     <div className='app'>
       <CurrentUserContext.Provider>
+        <Header />
         <Routes>
           {/* <Route
             path="*"
@@ -29,26 +31,19 @@ function App() {
           <Route
             path="/signin"
             element={
-              <>
-                <Header />
-                <Login />
-              </>
-
+              <Login />
             }
           ></Route>
           <Route
-            path="/signun"
+            path="/signup"
             element={
-              <>
-                <Header />
-                {/* <Register/>  */}
-              </>
+              <Register />
             }
           ></Route>
           <Route
             path="/"
             element={
-              <><Header />
+              <>
                 <Main />
                 <Footer />
               </>
@@ -56,31 +51,24 @@ function App() {
           ></Route>
           <Route
             path="/profile"
-            element={<>
-              <Header />
-              {/* <Profile /> */}
-            </>
-
+            element={
+              {/* <Profile /> */ }
             }
           ></Route>
           <Route
             path="/movies"
             element={<>
-              <Header />
               {/* <Movies /> */}
               <Footer />
             </>
-
             }
           ></Route>
           <Route
             path="/saved-movies"
             element={<>
-              <Header />
               {/* <SavedMovies /> */}
               <Footer />
             </>
-
             }
           ></Route>
         </Routes>
