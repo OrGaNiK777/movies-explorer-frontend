@@ -8,12 +8,14 @@
 	font-weight: 400;
 	line-height: normal;
 	border-bottom: solid 1px #dadada;
+	letter-spacing: -1px;
 }
 
 @media screen and (max-width: 1279px) {
 	.title {
 		width: 668px;
 		padding-bottom: 23px;
+		letter-spacing: -1px;
 	}
 }
 
@@ -22,5 +24,6 @@
 		width: 284px;
 		font-size: 18px;
 		padding-bottom: 27px;
+		letter-spacing: -0.8px;
 	}
 }

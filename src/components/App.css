@@ -1,3 +1,6 @@
+@import url(../vendor/normalize.css);
+@import url(../vendor/fonts/inter.css);
+
 .app {
 	font-family: 'Inter', Arial, Helvetica, sans-serif;
 	-webkit-font-smoothing: antialiased;
@@ -7,8 +10,7 @@
 	-moz-text-size-adjust: 100%;
 	margin: 0;
 	padding: 0;
-	background-color: #202020; 
-
+	background-color: #202020;
 }
 
 @media screen and (max-width: 1279px) {

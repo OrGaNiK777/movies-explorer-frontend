@@ -6,6 +6,8 @@ import Header from "./Header/Header"
 import Main from "./Main/Main"
 import Login from "./Login/Login"
 import Register from "./Register/Register"
+import Profile from './Profile/Profile';
+import PageNotFound from './PageNotFound/PageNotFound';
 import Footer from "./Footer/Footer"
 
 
@@ -14,8 +16,9 @@ function App() {
   //const isLogin = true
 
   return (
-    <div className='app'>
-      <CurrentUserContext.Provider>
+
+    <CurrentUserContext.Provider>
+      <div className='app'>
         <Header />
         <Routes>
           {/* <Route
@@ -50,9 +53,15 @@ function App() {
             }
           ></Route>
           <Route
+            path="*"
+            element={
+              <PageNotFound />
+            }
+          ></Route>
+          <Route
             path="/profile"
             element={
-              {/* <Profile /> */ }
+              <Profile />
             }
           ></Route>
           <Route
@@ -72,8 +81,9 @@ function App() {
             }
           ></Route>
         </Routes>
-      </CurrentUserContext.Provider>
-    </div>
+      </div >
+    </CurrentUserContext.Provider>
+
   );
 }
 

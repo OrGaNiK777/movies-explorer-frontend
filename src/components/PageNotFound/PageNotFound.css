@@ -1,0 +1,43 @@
+.pageNotFound {
+	margin: auto;
+  display: flex;
+  flex-direction: column;
+  padding-top: 245px;
+	margin-right: 2px;
+
+}
+.pageNotFound__title {
+	margin: 0;
+	color: #fff;
+	text-align: center;
+	text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+	font-size: 140px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+
+}
+.pageNotFound__paragraph {
+	margin: 0;
+  margin-top: 3px;
+  margin-right: 5px;
+	color: #fff;
+	text-align: center;
+	font-size: 16px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+}
+
+.pageNotFound__back {
+	color: #4285f4;
+	text-align: center;
+	font-size: 14px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+  text-decoration: none;
+  margin-top: 185px;
+  margin-right: 2px;
+  margin-bottom: 60px;
+}

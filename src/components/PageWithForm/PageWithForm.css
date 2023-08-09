@@ -1,7 +1,7 @@
 .access-page {
-  margin: auto;
+	margin: auto;
 	width: 1280px;
-	height: 570px;
+	min-height: 720px;
 	margin: auto;
 	display: flex;
 	flex-direction: column;
@@ -10,13 +10,12 @@
 	margin: 0;
 	margin-top: 20px;
 	margin-left: 442px;
-	margin-bottom: 38px;
+	margin-bottom: 40px;
 	color: #fff;
 	font-size: 24px;
 	font-style: normal;
 	font-weight: 500;
 	line-height: normal;
-	letter-spacing: 1px;
 }
 
 .access-page__form {
@@ -39,8 +38,7 @@
 	line-height: normal;
 	border: none;
 	position: fixed;
-	top: 551px;
-	letter-spacing: 0.5px;
+	top: 553px;
 }
 
 .access-page__input {
@@ -49,7 +47,15 @@
 	border-radius: 8px;
 	background: #2f2f2f;
 	border: none;
-	margin-bottom: 6px;
+	margin-bottom: 8px;
+	color: #fff;
+	font-size: 13px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+	text-indent: 13px;
+	letter-spacing: 0.5px;
+	outline: none;
 }
 
 .access-page__mes-error {
@@ -89,7 +95,6 @@
 
 .access-page__alternative-text {
 	margin: 0;
-	letter-spacing: 0.5px;
 	margin-top: 17px;
 	color: #8b8b8b;
 	text-align: center;

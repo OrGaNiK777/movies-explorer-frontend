@@ -1,0 +1,136 @@
+.profile {
+	margin: auto;
+	width: 1280px;
+	height: 605px;
+	margin: auto;
+	display: flex;
+	flex-direction: column;
+}
+
+.profile__title {
+	margin: 0;
+	margin-top: 56px;
+	margin-left: 537px;
+	margin-bottom: 107px;
+	color: #fff;
+	font-size: 24px;
+	font-style: normal;
+	font-weight: 500;
+	line-height: normal;
+}
+
+.profile__form {
+	margin: 0 auto;
+	display: flex;
+	flex-direction: column;
+	align-content: space-between;
+}
+
+.profile__input-element {
+	display: flex;
+	width: 410px;
+	margin-bottom: 1px;
+}
+
+.profile__line {
+	border-bottom: 1px solid #424242;
+	margin-bottom: 1px;
+}
+
+.profile__input {
+	padding: 0;
+	width: 392px;
+	height: 45px;
+	border-radius: 8px;
+	background: none;
+	border: none;
+	color: #fff;
+	font-size: 11px;
+	font-style: normal;
+	font-weight: 500;
+	line-height: normal;
+	text-align: right;
+	outline: none;
+	pointer-events: none;
+}
+
+.profile__input_active {
+	pointer-events: all;
+}
+
+.profile__field {
+	margin: 0;
+	margin-top: 16px;
+	width: 50px;
+	color: #fff;
+	text-align: left;
+	font-size: 11px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+}
+
+.profile__mes-error {
+	margin: 0;
+	color: #ff004c;
+	text-align: center;
+	font-size: 11px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+	opacity: 0;
+	position: absolute;
+	left: 608px;
+	bottom: 270px;
+	transition: 0.3s;
+}
+
+.profile__mes-error_acvive {
+	opacity: 1;
+}
+
+.profile__behaviour {
+	display: flex;
+	flex-direction: column;
+}
+
+.profile__edit {
+	margin: 0;
+	margin-top: 204px;
+	color: #fff;
+	text-align: center;
+	font-size: 13px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+	text-decoration: none;
+	letter-spacing: 0.9px;
+}
+.profile__signout {
+	margin: 0;
+	margin-top: 16px;
+	color: #ee3465;
+	text-align: center;
+	font-size: 13px;
+	font-style: normal;
+	font-weight: 500;
+	line-height: normal;
+	text-decoration: none;
+	letter-spacing: 0.7px;
+}
+
+.profile__button-submit {
+	margin-top: 205px;
+	border: none;
+	width: 410px;
+	height: 45px;
+	flex-shrink: 0;
+	border-radius: 3px;
+	background: #3456f3;
+	color: #fff;
+	text-align: center;
+	font-size: 14px;
+	font-style: normal;
+	font-weight: 500;
+	line-height: normal;
+}

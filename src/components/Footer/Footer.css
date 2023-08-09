@@ -27,7 +27,6 @@
 	font-style: normal;
 	font-weight: 400;
 	line-height: normal;
-	letter-spacing: 0.6px;
 }
 
 @media screen and (max-width: 767px) {
@@ -94,7 +93,7 @@
 	.footer__paragraph_3 {
 		grid-area: paragraph_3;
 		margin-left: 0px;
-		margin-top: 30px;
+		margin-top: 33px;
 	}
 }
 

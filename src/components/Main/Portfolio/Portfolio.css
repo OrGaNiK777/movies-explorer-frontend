@@ -28,7 +28,6 @@
 	font-weight: 400;
 	line-height: 20px;
 	margin-bottom: 47px;
-	letter-spacing: 0.2px;
 }
 
 @media screen and (max-width: 1279px) {
@@ -84,8 +83,8 @@
 	font-style: normal;
 	font-weight: 400;
 	line-height: 50px;
-	letter-spacing: -0.1px;
 	margin-bottom: 18px;
+	letter-spacing: -1.1px;
 }
 
 @media screen and (max-width: 1279px) {

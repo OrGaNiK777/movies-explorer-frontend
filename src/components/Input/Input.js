@@ -1,5 +1,3 @@
-import "./Input.css"
-
 function Input({
   name,
   placeholder,
