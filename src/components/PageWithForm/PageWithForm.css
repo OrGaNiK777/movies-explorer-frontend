@@ -2,10 +2,22 @@
 	margin: auto;
 	width: 1280px;
 	min-height: 720px;
-	margin: auto;
 	display: flex;
 	flex-direction: column;
 }
+
+@media screen and (max-width: 1279px) {
+	.access-page {
+		width: 768px;
+	}
+}
+
+@media screen and (max-width: 767px) {
+	.access-page {
+		width: 320px;
+	}
+}
+
 .access-page__title {
 	margin: 0;
 	margin-top: 20px;
@@ -18,12 +30,31 @@
 	line-height: normal;
 }
 
+@media screen and (max-width: 1279px) {
+	.access-page__title {
+		width: 768px;
+		margin-left: 184px;
+	}
+}
+
+@media screen and (max-width: 767px) {
+	.access-page__title {
+		width: 320px;
+		margin: 0;
+		display: flex;
+		justify-content: center;
+		margin-top: 29px;
+		margin-bottom: 82px;
+	}
+}
+
 .access-page__form {
 	margin: 0 auto;
 	display: flex;
 	flex-direction: column;
 	align-content: space-between;
 }
+
 .access-page__button-submit {
 	margin: 0;
 	width: 396px;
@@ -41,6 +72,15 @@
 	top: 553px;
 }
 
+@media screen and (max-width: 767px) {
+	.access-page__button-submit {
+		width: 260px;
+		top: 676px;
+		color: #fff;
+		font-size: 12px;
+	}
+}
+
 .access-page__input {
 	width: 392px;
 	height: 45px;
@@ -56,6 +96,12 @@
 	text-indent: 13px;
 	letter-spacing: 0.5px;
 	outline: none;
+}
+
+@media screen and (max-width: 767px) {
+	.access-page__input {
+		width: 257px;
+	}
 }
 
 .access-page__mes-error {
@@ -93,6 +139,13 @@
 	right: auto;
 }
 
+@media screen and (max-width: 767px) {
+	.access-page__alternative {
+		width: 260px;
+		top: 717px;
+	}
+}
+
 .access-page__alternative-text {
 	margin: 0;
 	margin-top: 17px;
@@ -102,4 +155,11 @@
 	font-style: normal;
 	font-weight: 400;
 	line-height: normal;
+}
+
+@media screen and (max-width: 767px) {
+	.access-page__alternative-text {
+		font-size: 12px;
+		margin-top: 18px;
+	}
 }

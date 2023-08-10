@@ -1,7 +1,7 @@
 .title {
 	width: 1140px;
 	margin: 0 auto;
-	padding-bottom: 22px;
+	padding-bottom: 21px;
 	color: #fff;
 	font-size: 22px;
 	font-style: normal;
@@ -14,14 +14,14 @@
 @media screen and (max-width: 1279px) {
 	.title {
 		width: 668px;
-		padding-bottom: 23px;
+		padding-bottom: 21px;
 		letter-spacing: -1px;
 	}
 }
 
 @media screen and (max-width: 767px) {
 	.title {
-		width: 284px;
+		width: 292px;
 		font-size: 18px;
 		padding-bottom: 27px;
 		letter-spacing: -0.8px;

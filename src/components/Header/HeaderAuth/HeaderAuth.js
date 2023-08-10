@@ -1,5 +1,6 @@
 import headerlogo from "../../../images/logo.svg"
 import headerButtonProfile from "../../../images/buttonProfile.svg"
+import headerMenuProfile from "../../../images/headerMenuAuth.svg"
 import { Link, NavLink } from "react-router-dom";
 
 function HeaderAuth() {
@@ -7,7 +8,7 @@ function HeaderAuth() {
     <header className="header header_auth">
       <NavLink to={"/"}>
         <img
-          className="header__logo"
+          className="header__logo header__logo_auth"
           src={headerlogo}
           alt="Логотип"
         /></NavLink>
@@ -21,6 +22,12 @@ function HeaderAuth() {
           />
         </NavLink>
       </Link>
+      <NavLink className="header__menu">
+        <img
+          src={headerMenuProfile}
+          alt="Кнопка меню"
+        />
+      </NavLink>
     </header>
   )
 }

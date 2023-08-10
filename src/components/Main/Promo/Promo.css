@@ -1,7 +1,7 @@
 .promo {
 	margin: auto;
-	display: flex;
 	width: 1280px;
+	display: flex;
 	background-color: #073042;
 	height: 441px;
 	padding-top: 78px;
@@ -27,7 +27,6 @@
 	margin: auto;
 }
 
-
 .promo__title {
 	margin: auto 0;
 	color: #fff;
@@ -40,15 +39,15 @@
 	position: relative;
 	bottom: 60px;
 	left: 160px;
-	letter-spacing: -2px;
+	letter-spacing: -2.3px;
 }
 
 @media screen and (max-width: 1279px) {
 	.promo__title {
 		bottom: 0px;
 		top: -47px;
-		left: 17px;
-		letter-spacing: -2px;
+		left: 19px;
+		letter-spacing: -2.3px;
 	}
 }
 
@@ -73,8 +72,8 @@
 
 @media screen and (max-width: 1279px) {
 	.promo__img {
-		right: 508px;
-		bottom: 50px;
+		right: 506px;
+		bottom: 48px;
 	}
 }
 

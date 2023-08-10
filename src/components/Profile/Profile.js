@@ -8,12 +8,17 @@ function Profile({ handleSubmit }) {
   const openValid = !textValid1 ? "profile__mes-error profile__mes-error_acvive" : "profile__mes-error"
   const authName = 'Виталий'
   const authEmail = "pochta@yandex.ru"
-  const acc = false
+  var visibility = true;
+  function render() {
+    if (visibility) {
+      visibility = false;
+    }
+  }
   const edit =
-    acc
+    visibility
       ?
       <div className='profile__behaviour'>
-        <a className='profile__edit' href='/'>Редактировать</a>
+        <a className='profile__edit' href='#' onClick={() => render()}>Редактировать</a>
         <a className='profile__signout' href='/signout'>Выйти из аккаунта</a>
       </div>
       :

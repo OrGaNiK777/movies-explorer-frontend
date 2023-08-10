@@ -20,12 +20,11 @@
 
 .navTab__container {
 	display: flex;
-
 }
 
 @media screen and (max-width: 1279px) {
 	.navTab__container {
-		margin-left: 34px;
+		margin-left: 0px;
 	}
 }
 
@@ -47,21 +46,22 @@
 	font-weight: 500;
 	line-height: 16px;
 	text-decoration-line: underline;
-	letter-spacing: -0.5px;
+	letter-spacing: -1px;
 }
 
 @media screen and (max-width: 1279px) {
 	.navTab__nav {
-		margin-top: 30px;
-		margin-left: 0px;
-		margin-right: 41px;
+		margin-top: 29px;
+		margin-left: 20px;
+		margin-right: 20px;
 		font-size: 13px;
+		letter-spacing: 0px;
 	}
 }
 
 @media screen and (max-width: 767px) {
 	.navTab__nav {
-		margin-top: 26px;
+		margin-top: 25px;
 		margin-left: 0;
 		margin-right: 25px;
 		font-size: 11px;

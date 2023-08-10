@@ -7,14 +7,14 @@
 
 @media screen and (max-width: 1279px) {
 	.aboutProject {
-		padding-top: 95px;
+		padding-top: 93px;
 		width: 768px;
 	}
 }
 
 @media screen and (max-width: 767px) {
 	.aboutProject {
-		padding-top: 72px;
+		padding-top: 70px;
 		width: 320px;
 	}
 }
@@ -55,7 +55,7 @@
 
 @media screen and (max-width: 1279px) {
 	.aboutProject__title2 {
-		margin-bottom: 18px;
+		margin-bottom: 22px;
 		letter-spacing: -1px;
 	}
 }
@@ -63,7 +63,7 @@
 @media screen and (max-width: 767px) {
 	.aboutProject__title2 {
 		font-size: 18px;
-		margin-bottom: 122px;
+		margin-bottom: 121px;
 		letter-spacing: -0.8px;
 	}
 }
@@ -88,8 +88,9 @@
 	.aboutProject__title3 {
 		font-size: 11px;
 		line-height: 16px;
-		margin-top: -270px;
+		margin-top: -272px;
 		margin-bottom: 386px;
+		letter-spacing: -0.2px;
 	}
 }
 
@@ -107,13 +108,13 @@
 	.aboutProject__containerParagraph {
 		margin-top: 87px;
 		grid-template-columns: 140px 528px;
-		margin-bottom: 80px;
+		margin-bottom: 78px;
 	}
 }
 
 @media screen and (max-width: 767px) {
 	.aboutProject__containerParagraph {
-		margin-top: -327px;
+		margin-top: -324px;
 		grid-template-columns: 100px 184px;
 		margin-bottom: 40px;
 	}

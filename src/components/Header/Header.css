@@ -8,21 +8,14 @@
 
 @media screen and (max-width: 1279px) {
 	.header {
-		max-width: 768px;
+		width: 768px;
 	}
 }
 
 @media screen and (max-width: 767px) {
 	.header {
-		max-width: 320px;
+		width: 320px;
 	}
-}
-.header_auth {
-	background-color: #202020;
-}
-
-.header_login {
-	background-color: #202020;
 }
 
 .header__component {
@@ -32,18 +25,13 @@
 	align-items: center;
 	text-decoration: none;
 	margin-top: 15px;
-	margin-left: 874px;
-}
-
-.header__component_auth {
-	margin-top: 1px;
-	margin-left: 0;
+	margin-left: 873px;
 }
 
 @media screen and (max-width: 1279px) {
 	.header__component {
 		margin-top: 15px;
-		margin-left: 445px;
+		margin-left: 441px;
 	}
 }
 
@@ -65,12 +53,101 @@
 	text-decoration: none;
 }
 
+@media screen and (max-width: 767px) {
+	.header__link {
+		font-size: 10px;
+		font-weight: 500;
+	}
+}
+
+.header__link:hover {
+	opacity: 0.7;
+}
+
+.header__logo {
+	margin-top: 18px;
+	margin-right: 45px;
+	margin-left: 70px;
+}
+@media screen and (max-width: 1279px) {
+	.header__logo {
+		margin-left: 31px;
+	}
+}
+
+@media screen and (max-width: 767px) {
+	.header__logo {
+		margin-left: 14px;
+	}
+}
+
+.header_auth {
+	background-color: #202020;
+}
+
+.header__component_auth {
+	margin-top: 1px;
+	margin-left: 0;
+}
+
+@media screen and (max-width: 1279px) {
+	.header__component_auth {
+		display: none;
+	}
+}
+
 .header__link_auth {
 	font-size: 12px;
 	font-weight: 500;
 	white-space: nowrap;
 	margin-right: 18px;
 	letter-spacing: 0.3px;
+}
+
+.header__buttonProfiles {
+	margin-top: 10px;
+	margin-left: 720px;
+}
+
+@media screen and (max-width: 1279px) {
+	.header__logo_auth {
+		margin: 0;
+		margin-top: 18px;
+		margin-left: 30px;
+	}
+}
+
+.header__menu {
+	display: none;
+}
+@media screen and (max-width: 1279px) {
+	.header__menu {
+		display: block;
+		margin-top: 15px;
+		margin-left: 625px;
+	}
+}
+
+.header_login {
+	background-color: #202020;
+}
+
+.header__logo_login {
+	margin-top: 70px;
+	margin-left: 442px;
+}
+
+@media screen and (max-width: 1279px) {
+	.header__logo_login {
+		margin-left: 186px;
+	}
+}
+
+@media screen and (max-width: 767px) {
+	.header__logo_login {
+		margin-top: 55px;
+		margin-left: 140px;
+	}
 }
 
 .header__link_no-login {
@@ -83,18 +160,6 @@
 	align-items: center;
 	color: #000;
 	margin-left: 29px;
-	
-}
-
-@media screen and (max-width: 767px) {
-	.header__link {
-		font-size: 10px;
-		font-weight: 500;
-	}
-}
-
-.header__link:hover {
-	opacity: 0.7;
 }
 
 @media screen and (max-width: 767px) {
@@ -107,31 +172,4 @@
 
 .header__link_no-login:hover {
 	opacity: 0.8;
-}
-
-.header__logo {
-	margin-top: 18px;
-	margin-right: 45px;
-	margin-left: 70px;
-}
-@media screen and (max-width: 1279px) {
-	.header__logo {
-		margin-left: 28px;
-	}
-}
-
-@media screen and (max-width: 767px) {
-	.header__logo {
-		margin-left: 14px;
-	}
-}
-
-.header__logo_login {
-	margin-top: 70px;
-	margin-left: 442px;
-}
-
-.header__buttonProfiles {
-	margin-top: 10px;
-	margin-left: 720px;
 }
