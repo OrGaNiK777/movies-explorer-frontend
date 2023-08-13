@@ -1,30 +1,42 @@
 import "./Profile.css"
 import Input from '../Input/Input'
+import { useState } from 'react'
 
 
 function Profile({ handleSubmit }) {
-  const textValid = false
-  const textValid1 = textValid ? textValid : "Проблем нет"
-  const openValid = !textValid1 ? "profile__mes-error profile__mes-error_acvive" : "profile__mes-error"
+
+  const [isEditInput, setEditInput] = useState(false);
+
+  function toggleEditInput() {
+    setEditInput(!isEditInput)
+  }
+
+  const error = false
+  const openValid = error ? "profile__mes-error profile__mes-error_acvive" : "profile__mes-error"
+  const textError = error ? "Есть проблема" : "Проблем нет"
+
+  const [isEdit, setEdit] = useState(true);
+
+  function toggleEdit() {
+    setEdit(!isEdit)
+  }
+
+  function modeEdit() {
+    return (
+      isEdit
+        ? <div className={`profile__behaviour`}>
+          <p className='profile__edit' onClick={() => { toggleEdit(); toggleEditInput() }}>Редактировать</p>
+          <a className='profile__signout' href='/signout'>Выйти из аккаунта</a>
+        </div >
+        : <button className={`profile__button-submit`} type="submit" >
+          Сохранить
+        </button >
+    );
+  }
+
   const authName = 'Виталий'
   const authEmail = "pochta@yandex.ru"
-  var visibility = true;
-  function render() {
-    if (visibility) {
-      visibility = false;
-    }
-  }
-  const edit =
-    visibility
-      ?
-      <div className='profile__behaviour'>
-        <a className='profile__edit' href='#' onClick={() => render()}>Редактировать</a>
-        <a className='profile__signout' href='/signout'>Выйти из аккаунта</a>
-      </div>
-      :
-      <button className="profile__button-submit" type="submit">
-        Сохранить
-      </button>
+
   return (
     <section className="profile">
       <h2 className="profile__title">{`Привет, ${authName}!`}</h2>
@@ -37,10 +49,10 @@ function Profile({ handleSubmit }) {
           <p className='profile__field'>Имя</p>
           <Input
             type="text"
-            classNameInput="profile__input"
+            classNameInput={isEditInput ? "profile__input profile__input_active" : "profile__input"}
             classNameValid={openValid}
             placeholder={authName}
-            TextValid={textValid1}
+            TextValid={textError}
           ></Input>
         </div>
         <line className='profile__line'></line>
@@ -48,15 +60,14 @@ function Profile({ handleSubmit }) {
           <p className='profile__field'>E-mail</p>
           <Input
             type="email"
-            classNameInput="profile__input"
+            classNameInput={isEditInput ? "profile__input profile__input_active" : "profile__input"}
             classNameValid={openValid}
             placeholder={authEmail}
-            TextValid={textValid1}
+            TextValid={textError}
           ></Input>
         </div>
-        {edit}
+        {modeEdit()}
       </form>
-
     </section>
   )
 }

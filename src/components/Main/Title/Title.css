@@ -21,9 +21,11 @@
 
 @media screen and (max-width: 767px) {
 	.title {
-		width: 292px;
+		width: 285px;
 		font-size: 18px;
-		padding-bottom: 27px;
-		letter-spacing: -0.8px;
+		padding-bottom: 28px;
+		letter-spacing: -0.5px;
+		margin-left: 17px;
 	}
 }
+

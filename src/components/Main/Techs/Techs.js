@@ -4,7 +4,7 @@ import Title from "../Title/Title.js"
 function Techs() {
   return (
     <section className='techs' id="techsId">
-      <Title textTitle="Технологии" />
+      <Title textTitle="Технологии" individual="techs__line-individual" />
       <h2 className='techs__title2'>7 технологий</h2>
       <h3 className='techs__title3'>
         На курсе веб-разработки мы освоили технологии,

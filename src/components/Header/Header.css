@@ -24,21 +24,21 @@
 	margin: 0;
 	align-items: center;
 	text-decoration: none;
-	margin-top: 15px;
-	margin-left: 873px;
+	margin-left: 919px;
+	margin-top: 12px;
 }
 
 @media screen and (max-width: 1279px) {
 	.header__component {
 		margin-top: 15px;
-		margin-left: 441px;
+		margin-left: 487px;
 	}
 }
 
 @media screen and (max-width: 767px) {
 	.header__component {
 		margin-top: 14px;
-		margin-left: 77px;
+		margin-left: 122px;
 	}
 }
 
@@ -66,8 +66,7 @@
 
 .header__logo {
 	margin-top: 18px;
-	margin-right: 45px;
-	margin-left: 70px;
+	margin-left: 69px;
 }
 @media screen and (max-width: 1279px) {
 	.header__logo {
@@ -86,8 +85,9 @@
 }
 
 .header__component_auth {
-	margin-top: 1px;
+	margin-top: 15px;
 	margin-left: 0;
+	cursor: default;
 }
 
 @media screen and (max-width: 1279px) {
@@ -100,13 +100,13 @@
 	font-size: 12px;
 	font-weight: 500;
 	white-space: nowrap;
+	margin-left: 44px;
 	margin-right: 18px;
 	letter-spacing: 0.3px;
 }
 
-.header__buttonProfiles {
-	margin-top: 10px;
-	margin-left: 720px;
+.header__link_auth:nth-last-child(-n + 2) {
+	margin-left: 0px;
 }
 
 @media screen and (max-width: 1279px) {
@@ -117,14 +117,85 @@
 	}
 }
 
+@media screen and (max-width: 767px) {
+	.header__logo_auth {
+		margin-top: 18px;
+		margin-left: 15px;
+	}
+}
+
+.header__button_auth {
+	width: 86px;
+	display: flex;
+	margin-left: 743px;
+	outline: none;
+	text-decoration: none;
+}
+
+@media screen and (max-width: 1279px) {
+	.header__button_auth {
+		margin: auto;
+		margin-top: 589px;
+		text-align: center;
+	}
+}
+
+@media screen and (max-width: 767px) {
+	.header__button_auth {
+		margin-top: 415px;
+		text-align: center;
+	}
+}
+
+.header__button-text {
+	font-size: 13px;
+	font-style: normal;
+	font-weight: 500;
+	line-height: 12px;
+	color: #fff;
+	margin-right: 7px;
+}
+
+.header__button-profile {
+	padding-left: 1px;
+	margin-top: 6px;
+	width: 26px;
+	height: 26px;
+	border-radius: 50px;
+	background: #313131;
+}
+
+.header__button-svg {
+	display: flex;
+	margin: 7px auto;
+	width: 12px;
+	height: 12px;
+}
+
 .header__menu {
 	display: none;
 }
+
 @media screen and (max-width: 1279px) {
 	.header__menu {
 		display: block;
 		margin-top: 15px;
 		margin-left: 625px;
+	}
+}
+
+@media screen and (max-width: 767px) {
+	.header__menu {
+		margin: 0;
+		margin-top: 20px;
+		margin-left: 216px;
+	}
+}
+
+@media screen and (max-width: 767px) {
+	.header__menu-svg {
+		background-size: cover;
+		width: 35px;
 	}
 }
 

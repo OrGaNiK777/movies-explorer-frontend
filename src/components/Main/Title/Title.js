@@ -1,8 +1,8 @@
 import "./Title.css"
 
-function Title({ textTitle }) {
+function Title({ textTitle, individual }) {
   return (
-    <h2 className='title'>{textTitle}</h2>
+    <h2 className={`title ${individual}`}>{textTitle}</h2>
   )
 }
 

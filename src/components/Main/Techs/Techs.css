@@ -3,7 +3,7 @@
 	width: 1280px;
 	flex-shrink: 0;
 	background-color: #272727;
-	padding-top: 102px;
+	padding-top: 103px;
 	padding-bottom: 1px;
 }
 
@@ -19,6 +19,13 @@
 	.techs {
 		width: 320px;
 		padding-top: 91px;
+		background-color: #202020;
+	}
+}
+
+@media screen and (max-width: 767px) {
+	.techs__line-individual {
+		border-bottom: solid 1px #000;
 	}
 }
 

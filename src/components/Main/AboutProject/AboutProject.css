@@ -2,7 +2,7 @@
 	margin: auto;
 	width: 1280px;
 	flex-shrink: 0;
-	padding-top: 113px;
+	padding-top: 114px;
 }
 
 @media screen and (max-width: 1279px) {
@@ -14,7 +14,7 @@
 
 @media screen and (max-width: 767px) {
 	.aboutProject {
-		padding-top: 70px;
+		padding-top: 72px;
 		width: 320px;
 	}
 }
@@ -63,8 +63,8 @@
 @media screen and (max-width: 767px) {
 	.aboutProject__title2 {
 		font-size: 18px;
-		margin-bottom: 121px;
-		letter-spacing: -0.8px;
+		margin-bottom: 123px;
+		letter-spacing: -0.7px;
 	}
 }
 
@@ -88,9 +88,9 @@
 	.aboutProject__title3 {
 		font-size: 11px;
 		line-height: 16px;
-		margin-top: -272px;
+		margin-top: -271px;
 		margin-bottom: 386px;
-		letter-spacing: -0.2px;
+		letter-spacing: 0px;
 	}
 }
 
@@ -114,7 +114,7 @@
 
 @media screen and (max-width: 767px) {
 	.aboutProject__containerParagraph {
-		margin-top: -324px;
+		margin-top: -326px;
 		grid-template-columns: 100px 184px;
 		margin-bottom: 40px;
 	}
