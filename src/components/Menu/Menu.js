@@ -6,7 +6,7 @@ function Menu({ buttonProfile, isOpenMenu, setOpenMenu }) {
 
   return (
     <div className={isOpenMenu ? "menu menu_active" : "menu"} onClick={() => setOpenMenu(false)} >
-      <div className='blur' />
+      <div className='menu__blur' />
       <div className='menu__content'>
         <NavLink className='menu__link' to={'/'}>Главная</NavLink>
         <NavLink className='menu__link' to={'/movies'}>Фильмы</NavLink>

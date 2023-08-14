@@ -59,7 +59,7 @@
 	width: 396px;
 	height: 45px;
 	border-radius: 3px;
-	background: #4285f4;
+	background: #3456f3;
 	color: #fff;
 	text-align: center;
 	font-size: 14px;
@@ -69,6 +69,10 @@
 	border: none;
 	position: absolute;
 	top: 553px;
+}
+
+.access-page__button-submit:hover {
+	opacity: 0.8;
 }
 
 @media screen and (max-width: 767px) {
@@ -154,6 +158,15 @@
 	font-style: normal;
 	font-weight: 400;
 	line-height: normal;
+}
+
+.access-page__alternative-link {
+	color: #4285f4;
+	text-decoration: none;
+}
+
+.access-page__alternative-link:hover {
+	opacity: 0.8;
 }
 
 @media screen and (max-width: 767px) {

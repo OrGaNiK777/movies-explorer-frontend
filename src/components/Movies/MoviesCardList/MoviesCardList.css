@@ -1,0 +1,20 @@
+.moviesCardList {
+	margin: auto;
+	margin-top: 15px;
+	margin-left: 70px;
+	display: flex;
+	flex-flow: row wrap;
+	width: 1280px;
+}
+
+@media screen and (max-width: 1279px) {
+	.moviesCardList {
+		width: 768px;
+	}
+}
+
+@media screen and (max-width: 767px) {
+	.moviesCardList {
+		width: 320px;
+	}
+}

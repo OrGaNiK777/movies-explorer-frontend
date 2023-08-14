@@ -16,8 +16,7 @@ export default function Register({ isLoading }) {
         <p className="access-page__alternative-text">
           Уже зарегистрированы?
           <Link
-            className="access-page__alternative-text"
-            style={{ color: "#4285F4", textDecoration: "none" }}
+            className="access-page__alternative-link"
             to="/signin"
           >
             {" "}

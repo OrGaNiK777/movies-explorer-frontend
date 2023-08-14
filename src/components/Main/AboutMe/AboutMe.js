@@ -20,7 +20,7 @@ function AboutMe() {
           После того, как прошёл курс по веб-разработке,
           начал заниматься фриланс-заказами и ушёл с постоянной работы.
         </p>
-        <a className='aboutMe__paragraph2' href='https://github.com/OrGaNiK777'>
+        <a className='aboutMe__paragraph2' href='https://github.com/OrGaNiK777' target="_blank" rel="noreferrer">
           Github
         </a>
       </div>

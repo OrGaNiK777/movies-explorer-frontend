@@ -131,7 +131,7 @@
 }
 
 @media screen and (max-width: 767px) {
-	.pprofile__mes-error {
+	.profile__mes-error {
 		left: 608px;
 		bottom: 270px;
 	}

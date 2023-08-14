@@ -22,8 +22,8 @@
 	transform: translateX(0);
 }
 
-.blur {
-	width: 100vw;
+.menu__blur {
+	width: 60vw;
 	height: 100vh;
 	position: absolute;
 	right: 100%;

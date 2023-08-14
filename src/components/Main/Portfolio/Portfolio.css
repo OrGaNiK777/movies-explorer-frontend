@@ -75,6 +75,10 @@
 	}
 }
 
+.portfolio__links:hover {
+	opacity: 0.7;
+}
+
 .portfolio__link1 {
 	grid-area: link1;
 	margin: 0;
