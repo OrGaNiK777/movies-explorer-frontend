@@ -9,6 +9,7 @@
 	transform: translateX(320%);
 	transition: 100ms;
 	cursor: default;
+	z-index: 1;
 }
 
 @media screen and (max-width: 767px) {

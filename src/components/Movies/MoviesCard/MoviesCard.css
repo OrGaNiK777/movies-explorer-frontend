@@ -2,12 +2,63 @@
 	margin-top: 37px;
 	margin-bottom: 16px;
 	margin-right: 24px;
+	cursor: pointer;
+}
+
+.movieCard:hover {
+	opacity: 0.7;
+}
+
+.movieCard:nth-child(3n) {
+	margin-right: 0px;
+}
+
+@media screen and (max-width: 1279px) {
+	.movieCard {
+		margin-right: 30px;
+		margin-top: 26px;
+	}
+	.movieCard:nth-child(3n) {
+		margin-right: 30px;
+	}
+	.movieCard:nth-child(2n) {
+		margin-right: 0px;
+	}
+}
+
+@media screen and (max-width: 767px) {
+	.movieCard {
+		width: 292px;
+		margin-right: 10px;
+		margin-top: 11px;
+	}
+	.movieCard:nth-child(3n) {
+		margin-right: 0px;
+	}
+	.movieCard:nth-child(2n) {
+		margin-right: 0px;
+	}
+	.movieCard:nth-child(1n) {
+		margin-right: 0px;
+	}
 }
 
 .moviesCard__container-description {
 	width: 364px;
 	display: flex;
 	flex-flow: row wrap;
+}
+
+@media screen and (max-width: 1279px) {
+	.moviesCard__container-description {
+		width: 339px;
+	}
+}
+
+@media screen and (max-width: 767px) {
+	.moviesCard__container-description {
+		width: 300px;
+	}
 }
 
 .moviesCard__img {
@@ -26,6 +77,8 @@
 
 @media screen and (max-width: 767px) {
 	.moviesCard__img {
+		width: 300px;
+		height: 168px;
 	}
 }
 
@@ -41,6 +94,22 @@
 	line-height: normal;
 }
 
+@media screen and (max-width: 1279px) {
+	.moviesCard__title {
+		margin-left: 15px;
+		width: 260px;
+		margin-top: 11px;
+	}
+}
+
+@media screen and (max-width: 767px) {
+	.moviesCard__title {
+		margin-left: 14px;
+		width: 240px;
+		font-size: 12px;
+	}
+}
+
 .moviesCard__likes {
 	padding: 0;
 	margin: 0;
@@ -52,6 +121,19 @@
 	background-color: transparent;
 	background-image: url(../../../images/likeOff.svg);
 	background-repeat: no-repeat;
+}
+
+@media screen and (max-width: 1279px) {
+	.moviesCard__likes {
+		margin-left: 20px;
+	}
+}
+
+@media screen and (max-width: 767px) {
+	.moviesCard__likes {
+		margin-top: 3px;
+		margin-left: 6px;
+	}
 }
 
 .moviesCard__likes_active {
@@ -71,4 +153,17 @@
 	font-style: normal;
 	font-weight: 400;
 	line-height: normal;
+}
+@media screen and (max-width: 1279px) {
+	.moviesCard__duration {
+		margin-left: 15px;
+		margin-top: 7px;
+	}
+}
+
+@media screen and (max-width: 767px) {
+	.moviesCard__duration {
+		margin-top: 6px;
+		margin-left: 14px;
+	}
 }

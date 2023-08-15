@@ -28,9 +28,4 @@ export const initMovies = [
     description: "Киноальманах «100 лет дизайна»",
     image: pic2
   },
-  {
-    duration: "1ч 47м",
-    description: "В погоне за Бенкси",
-    image: pic3
-  }
 ];

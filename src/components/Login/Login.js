@@ -11,7 +11,7 @@ export default function Login({ isLoading }) {
     <>
       <PageWithForm
         title="Рады видеть!"
-        name="add"
+        name="login"
         nameBtn={isLoading ? "Вход..." : "Войти"}
         alternative={
           <p className="access-page__alternative-text">

@@ -10,7 +10,7 @@ export default function Register({ isLoading }) {
   return (
     <PageWithForm
       title="Добро пожаловать!"
-      name="add"
+      name="register"
       nameBtn={isLoading ? "Регистрация..." : "Зарегистрироваться"}
       alternative={
         <p className="access-page__alternative-text">
