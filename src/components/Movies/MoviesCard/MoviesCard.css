@@ -1,8 +1,10 @@
 .movieCard {
 	margin-top: 37px;
-	margin-bottom: 16px;
+	padding-bottom: 16px;
 	margin-right: 24px;
 	cursor: pointer;
+	border-radius: 6px;
+	background: #222;
 }
 
 .movieCard:hover {

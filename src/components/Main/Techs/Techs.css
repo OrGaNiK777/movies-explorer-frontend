@@ -88,7 +88,7 @@
 	}
 }
 
-.techs_buttons {
+.techs__buttons {
 	display: flex;
 	justify-content: center;
 	margin-top: 100px;
@@ -96,14 +96,14 @@
 }
 
 @media screen and (max-width: 1279px) {
-	.techs_buttons {
+	.techs__buttons {
 		margin-top: 85px;
 		padding-bottom: 89px;
 	}
 }
 
 @media screen and (max-width: 767px) {
-	.techs_buttons {
+	.techs__buttons {
 		display: block;
 		margin-top: 50px;
 		margin-left: 71px;
@@ -111,7 +111,7 @@
 	}
 }
 
-.techs_button {
+.techs__button {
 	width: 90px;
 	height: 60px;
 	flex-shrink: 0;
@@ -129,7 +129,7 @@
 }
 
 @media screen and (max-width: 1279px) {
-	.techs_button {
+	.techs__button {
 		width: 84px;
 		height: 57px;
 		margin-top: -1px;
@@ -139,7 +139,7 @@
 }
 
 @media screen and (max-width: 767px) {
-	.techs_button {
+	.techs__button {
 		font-size: 12px;
 		margin-bottom: 11px;
 	}

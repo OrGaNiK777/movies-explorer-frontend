@@ -5,16 +5,16 @@ const FilterCheckbox = () => {
   return (
     <div className='filterCheckbox'>
       <input
-        className="filterCheckbox-checkbox"
-        id={`filterCheckbox-new`}
+        className="filterCheckbox__checkbox"
+        id={`filterCheckbox__new`}
         type="checkbox"
       />
       <label
         style={{ background: isOn && '#06D6A0' }}
-        className="filterCheckbox-label"
-        htmlFor={`filterCheckbox-new`}
+        className="filterCheckbox__label"
+        htmlFor={`filterCheckbox__new`}
       >
-        <span className={`filterCheckbox-button`} />
+        <span className={`filterCheckbox__button`} />
       </label>
       <p className='filterCheckbox__title'>Короткометражки</p>
     </div>

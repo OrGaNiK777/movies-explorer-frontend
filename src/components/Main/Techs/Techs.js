@@ -10,14 +10,14 @@ function Techs() {
         На курсе веб-разработки мы освоили технологии,
         которые применили в дипломном проекте.
       </h3>
-      <div className='techs_buttons'>
-        <button className='techs_button'>HTML</button>
-        <button className='techs_button'>CSS</button>
-        <button className='techs_button'>JS</button>
-        <button className='techs_button'>React</button>
-        <button className='techs_button'>Git</button>
-        <button className='techs_button'>Express.js</button>
-        <button className='techs_button'>mongoDB</button>
+      <div className='techs__buttons'>
+        <button className='techs__button'>HTML</button>
+        <button className='techs__button'>CSS</button>
+        <button className='techs__button'>JS</button>
+        <button className='techs__button'>React</button>
+        <button className='techs__button'>Git</button>
+        <button className='techs__button'>Express.js</button>
+        <button className='techs__button'>mongoDB</button>
       </div>
     </section>
   )

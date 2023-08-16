@@ -33,14 +33,12 @@
 
 @media screen and (max-width: 1279px) {
 	.portfolio__title {
-		width: 768px;
 		margin-left: 50px;
 	}
 }
 
 @media screen and (max-width: 767px) {
 	.portfolio__title {
-		width: 320px;
 		font-size: 14px;
 		margin-left: 15px;
 		margin-bottom: 39px;
