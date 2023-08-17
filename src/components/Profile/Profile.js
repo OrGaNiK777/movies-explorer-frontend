@@ -55,7 +55,7 @@ function Profile({ handleSubmit }) {
             TextValid={textError}
           ></Input>
         </div>
-        <line className='profile__line'></line>
+        <p className='profile__line'></p>
         <div className='profile__input-element'>
           <p className='profile__field'>E-mail</p>
           <Input

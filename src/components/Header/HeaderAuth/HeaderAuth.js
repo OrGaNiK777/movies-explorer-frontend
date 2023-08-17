@@ -2,7 +2,7 @@ import { useState } from 'react';
 import headerlogo from "../../../images/logo.svg"
 import headerButtonProfile from "../../../images/buttonProfile.svg"
 import headerMenuProfile from "../../../images/headerMenuAuth.svg"
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import Menu from '../../Menu/Menu';
 
 function HeaderAuth() {
@@ -14,7 +14,7 @@ function HeaderAuth() {
   }
 
   const buttonProfile =
-    <NavLink className="header__button_auth" to={"/profile"}>
+    <NavLink className="header__button header__button_auth" to={"/profile"}>
       <p className='header__button-text'>Аккаунт</p>
       <div className='header__button-profile'>
         <img
@@ -33,12 +33,12 @@ function HeaderAuth() {
           src={headerlogo}
           alt="Логотип"
         /></NavLink>
-      <Link className="header__component header__component_auth">
+      <div className="header__component header__component_auth">
         <NavLink className="header__link header__link_auth" to={"/movies"}>Фильмы</NavLink>
         <NavLink className="header__link header__link_auth" to={"/saved-movies"}>Сохранённые фильмы</NavLink>
         {buttonProfile}
-      </Link>
-      <NavLink className="header__menu">
+      </div>
+      <div className="header__menu">
         <img
           className='header__menu-svg'
           src={headerMenuProfile}
@@ -46,7 +46,7 @@ function HeaderAuth() {
           onClick={toggleOpenMenu}
         />
         <Menu isOpenMenu={isOpenMenu} setOpenMenu={setOpenMenu} buttonProfile={buttonProfile} />
-      </NavLink>
+      </div>
     </header>
   )
 }

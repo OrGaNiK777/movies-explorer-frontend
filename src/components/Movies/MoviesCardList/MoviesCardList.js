@@ -6,13 +6,13 @@ import { initMovies } from '../../../utils/initMovies';
 function MoviesCardList() {
 
   return (
-    <section className='moviesCardList'>
+    <div className='moviesCardList'>
       {initMovies.map((movie) => (
         <MoviesCard movie={movie}
         />
       ))}
       <button className='moviesCardList__buttonAdd'>Ещё</button>
-    </section>
+    </div>
 
 
   );

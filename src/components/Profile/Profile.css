@@ -66,6 +66,7 @@
 }
 
 .profile__line {
+	margin: 0;
 	border-bottom: 1px solid #424242;
 	margin-bottom: 1px;
 }

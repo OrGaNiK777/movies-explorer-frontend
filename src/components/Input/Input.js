@@ -12,8 +12,7 @@ function Input({
   type,
   useRef,
   classNameInputСontent,
-  InputСontent,
-  children
+  InputСontent
 }) {
   return (
     <><p className={classNameInputСontent}>{InputСontent}</p>
@@ -29,7 +28,6 @@ function Input({
         minLength={minLength}
         required
         ref={useRef}>
-        {children}
       </input>
       <span className={classNameValid}>{TextValid}</span>
     </>
