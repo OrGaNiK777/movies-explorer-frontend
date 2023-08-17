@@ -1,0 +1,80 @@
+.menu {
+	display: block;
+	position: fixed;
+	top: 0;
+	right: 0;
+	width: 520px;
+	height: 1024px;
+	background-color: #202020;
+	transform: translateX(320%);
+	transition: 100ms;
+	cursor: default;
+	z-index: 1;
+}
+
+@media screen and (max-width: 767px) {
+	.menu {
+		width: 100%;
+		height: 100%;
+	}
+}
+
+.menu_active {
+	transform: translateX(0);
+}
+
+.menu__blur {
+	width: 60vw;
+	height: 100vh;
+	position: absolute;
+	right: 100%;
+	opacity: 0.3;
+	background: #000;
+}
+
+.menu__content {
+	display: flex;
+	flex-direction: column;
+	margin-top: 159px;
+	transition: 100ms;
+}
+
+@media screen and (max-width: 767px) {
+	.menu__content {
+		margin-top: 145px;
+	}
+}
+
+.menu__link {
+	margin: 0;
+	margin-bottom: 29px;
+	color: #fff;
+	font-size: 18px;
+	font-style: normal;
+	font-weight: 500;
+	line-height: normal;
+	text-align: center;
+	text-decoration: none;
+}
+
+@media screen and (max-width: 767px) {
+	.menu__link {
+		margin-bottom: 25px;
+	}
+}
+
+.menu__buttonClose {
+	margin: 0;
+	color: #fff;
+	position: absolute;
+	top: 22.44px;
+	right: 22.44px;
+	cursor: pointer;
+}
+
+@media screen and (max-width: 767px) {
+	.menu__buttonClose {
+		top: 13.44px;
+		right: 13.64px;
+	}
+}

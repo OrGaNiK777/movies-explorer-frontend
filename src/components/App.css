@@ -1,0 +1,31 @@
+@import url(../vendor/normalize.css);
+@import url(../vendor/fonts/inter.css);
+
+/* * {
+	outline: 1px solid red;
+} */
+
+.app {
+	font-family: 'Inter', Arial, Helvetica, sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	-webkit-text-size-adjust: 100%;
+	-ms-text-size-adjust: 100%;
+	-moz-text-size-adjust: 100%;
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	margin: auto;
+}
+
+@media screen and (max-width: 1279px) {
+	.app {
+		width: 768px;
+	}
+}
+
+@media screen and (max-width: 767px) {
+	.app {
+		width: 320px;
+	}
+}
