@@ -1,15 +1,23 @@
 import MoviesCardList from './MoviesCardList/MoviesCardList';
 import SeachForm from "./SearchForm/SearchForm";
+import MoviesCard from './MoviesCard/MoviesCard'
 
-// import Preloader from './Preloader/Preloader'
-
-function Movies() {
-
+function Movies({isMovies, handleReceivingMovies, handleClick, roundedVisibleCardCount, setInputValue }) {
 
   return (
     <>
-      <SeachForm />
-      <MoviesCardList />
+      <SeachForm
+        setInputValue={setInputValue}
+        handleReceivingMovies={handleReceivingMovies} />
+      <MoviesCardList
+        isMovies={isMovies}
+        handleClick={handleClick}
+        handleSearchMovies={setInputValue}>
+        {isMovies?.slice(0, roundedVisibleCardCount).map((movie) => (
+          <MoviesCard
+            movie={movie}
+            key={movie.id}
+          />))}</MoviesCardList>
     </>
   );
 }

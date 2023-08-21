@@ -1,25 +1,38 @@
+import { useRef } from 'react';
 import Input from "../Input/Input";
 import PageWithForm from "../PageWithForm/PageWithForm"
 import { Link } from 'react-router-dom';
 
 
-export default function Login({ isLoading }) {
+export default function Login({ isLoading, handleLoginSubmit }) {
   const textValid = false
   const textValid1 = textValid ? textValid : "Проблем нет"
   const openValid = !textValid1 ? "access-page__mes-error access-page__mes-error_acvive" : "access-page__mes-error"
+
+  const inputEmailRef = useRef();
+  const inputPassRef = useRef();
+
+  function handleSubmit(e) {
+    // Запрещаем браузеру переходить по адресу формы
+    e.preventDefault();
+    handleLoginSubmit(
+      inputPassRef.current.value,
+      inputEmailRef.current.value
+    );
+  }
   return (
     <>
       <PageWithForm
         title="Рады видеть!"
         name="login"
         nameBtn={isLoading ? "Вход..." : "Войти"}
+        handleSubmit={handleSubmit}
         alternative={
           <p className="access-page__alternative-text">
             Ещё не зарегистрированы?
             <Link
               className="access-page__alternative-link"
               to="/signup"
-
             >
               {" "}
               Регистрация
@@ -28,6 +41,7 @@ export default function Login({ isLoading }) {
         }
       >
         <Input
+        useRef={inputEmailRef}
           type="email"
           classNameInput="access-page__input"
           classNameValid={openValid}
@@ -36,6 +50,7 @@ export default function Login({ isLoading }) {
           TextValid={textValid1}
         ></Input>
         <Input
+        useRef={inputPassRef}
           type="text"
           classNameInput="access-page__input"
           classNameValid={openValid}

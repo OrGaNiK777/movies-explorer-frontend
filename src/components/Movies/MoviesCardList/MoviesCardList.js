@@ -1,20 +1,13 @@
 import "./MoviesCardList.css"
+import Preloader from '../Preloader/Preloader';
 
-import MoviesCard from '../MoviesCard/MoviesCard';
-import { initMovies } from '../../../utils/initMovies';
-
-function MoviesCardList() {
-
+function MoviesCardList({ children, handleClick, isMovies }) {
   return (
-    <div className='moviesCardList'>
-      {initMovies.map((movie) => (
-        <MoviesCard movie={movie}
-        />
-      ))}
-      <button className='moviesCardList__buttonAdd'>Ещё</button>
-    </div>
-
-
+    children.length < 1 ? <Preloader /> :
+      <div className='moviesCardList'>
+        {children}
+        <button className={children.length < isMovies.length ? 'moviesCardList__buttonAdd' : "moviesCardList__buttonAdd_hide"} onClick={handleClick}>Ещё</button>
+      </div>
   );
 }
 

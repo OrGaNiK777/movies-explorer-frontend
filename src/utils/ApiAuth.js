@@ -1,5 +1,5 @@
-//const url = "http://localhost:4000";
-const url = "https://api.mesto.organik.nomoredomains.xyz";
+const url = "http://localhost:4000";
+//const url = "https://api.mesto.organik.nomoredomains.xyz";
 const headers = {
 	Accept: "application/json",
 	"Content-Type": "application/json",
@@ -13,20 +13,20 @@ function checkingResponse(res) {
 	return Promise.reject(`Ошибка: ${res.status}`);
 }
 
-export const register = (password, email) => {
+export const register = (email, password, name) => {
 	return fetch(`${url}/signup`, {
 		method: "POST",
 		headers: headers,
-		body: JSON.stringify({ password, email }),
+		body: JSON.stringify({ password, email, name }),
 	}).then((res) => checkingResponse(res));
 };
 
-export const authorize = (password, email) => {
+export const authorize = (email, password) => {
 	return fetch(`${url}/signin`, {
 		method: "POST",
 		headers: headers,
 		credentials: 'include',
-		body: JSON.stringify({ password, email }),
+		body: JSON.stringify({ email, password }),
 	}).then((res) => checkingResponse(res));
 };
 
@@ -37,11 +37,3 @@ export const checkToken = () => {
 		credentials: 'include',
 	}).then((res) => { return checkingResponse(res) });
 };
-
-export const loginOut = () => {
-	return fetch(`${url}/signout`, {
-		method: "DELETE",
-		headers: headers,
-		credentials: 'include',
-	}).then((res) => { return checkingResponse(res) });
-}

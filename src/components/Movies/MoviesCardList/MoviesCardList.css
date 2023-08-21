@@ -39,6 +39,10 @@
 	cursor: pointer;
 }
 
+.moviesCardList__buttonAdd_hide {
+	display: none;
+}
+
 .moviesCardList__buttonAdd:hover {
 	opacity: 0.7;
 }
@@ -54,6 +58,5 @@
 	.moviesCardList__buttonAdd {
 		margin-top: 71px;
 		margin-bottom: 136px;
-
 	}
 }

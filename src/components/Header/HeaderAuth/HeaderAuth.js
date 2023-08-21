@@ -5,7 +5,7 @@ import headerMenuProfile from "../../../images/headerMenuAuth.svg"
 import { NavLink } from "react-router-dom";
 import Menu from '../../Menu/Menu';
 
-function HeaderAuth() {
+function HeaderAuth({ styleBack }) {
 
   const [isOpenMenu, setOpenMenu] = useState(false)
 
@@ -26,7 +26,7 @@ function HeaderAuth() {
     </NavLink>
 
   return (
-    <header className="header header_auth">
+    <header className="header header_auth" style={styleBack}>
       <NavLink to={"/"}>
         <img
           className="header__logo header__logo_auth"
