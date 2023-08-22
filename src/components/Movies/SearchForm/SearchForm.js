@@ -2,23 +2,35 @@ import './SearchForm.css'
 import Input from '../../Input/Input'
 import FilterCheckbox from './FilterCheckbox/FilterCheckbox';
 import { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 
-function SearchForm({ handleReceivingMovies, setInputValue }) {
+function SearchForm({
+  handleReceivingMovies,
+  setInputValue,
+  onShortMovies,
+  setOnShortMovies,
+  handleShortMovies,
+  isMovies,
+  setIsMovies }) {
 
+  const location = useLocation()
   //поиск фильмов и запить в гараж
   const handleSearchSubmit = (valueInput) => {
     localStorage.setItem('inputValue', valueInput);
   }
 
-  const valueInput = localStorage.getItem('inputValue')
+  const valueInput = localStorage.getItem('inputValue') === null ?
+    "" : localStorage.getItem('inputValue')
 
   const [errorText, setErrorText] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
     if (/[a-zA-Z0-9а-яёА-ЯЁ]/gi.test(valueInput)) {
       setErrorText('');
-      handleReceivingMovies();
+      handleReceivingMovies()
+
     } else {
       setErrorText('Нужно ввести ключевое слово');
     }
@@ -30,11 +42,14 @@ function SearchForm({ handleReceivingMovies, setInputValue }) {
   };
 
   useEffect(() => {
-    if (/[a-zA-Z0-9а-яёА-ЯЁ]/gi.test(valueInput)) {
-      setErrorText('');
-      handleReceivingMovies();
+    if (location.pathname === '/movies') {
+      setIsMovies(JSON.parse(localStorage.getItem('movies')) ?
+        JSON.parse(localStorage.getItem('movies')) : [])
     }
+    // eslint-disable-next-line
   }, [])
+
+
 
   return (
     <>
@@ -52,7 +67,7 @@ function SearchForm({ handleReceivingMovies, setInputValue }) {
         </Input>
         <button className='searchForm__button-submit'></button>
       </form>
-      <FilterCheckbox></FilterCheckbox>
+      <FilterCheckbox onShortMovies={onShortMovies} handleShortMovies={handleShortMovies}></FilterCheckbox>
     </>
   );
 }

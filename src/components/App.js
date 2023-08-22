@@ -47,7 +47,7 @@ function App() {
     }
 
     if (isTablet) {
-      return setVisibleCardCount(visibleCardCount + 20);
+      return setVisibleCardCount(visibleCardCount + 2);
     }
 
     setVisibleCardCount(visibleCardCount + 2);
@@ -75,7 +75,6 @@ function App() {
   }
 
   //отправка данных для регистрации
-
   function handleRegisterSubmit(email, password, name) {
     setIsLoading(!isLoading);
     apiAuth.register(email, password, name)
@@ -130,11 +129,20 @@ function App() {
     moviesApi.getMovies()
       .then((item) => {
         setIsMovies(item)
+        localStorage.setItem('movies', JSON.stringify(item))
       })
       .catch((err) => console.log(err))
       .finally(() => {
         setIsLoading(false);
       });
+  }
+
+  //состояние checkbox ShortMovies
+  const [onShortMovies, setOnShortMovies] =
+    useState(JSON.parse(localStorage.getItem('onShortMovies')))
+  function handleShortMovies() {
+    setOnShortMovies(!onShortMovies)
+    localStorage.setItem('onShortMovies', JSON.stringify(!onShortMovies))
   }
 
   //выгрузка сохраненных фильмов с сервера
@@ -176,6 +184,7 @@ function App() {
       .then((data) => {
         if (data) {
           setIsLogin(false);
+          localStorage.clear()
         }
       })
   }
@@ -245,10 +254,14 @@ function App() {
                   setInputValue={setInputValue}
                   handleReceivingMovies={handleReceivingMovies}
                   isLogin={isLogin}
+                  setIsMovies={setIsMovies}
                   element={Movies}
                   isMovies={isMovies}
                   handleClick={handleClick}
                   roundedVisibleCardCount={roundedVisibleCardCount}
+                  onShortMovies={onShortMovies}
+                  setOnShortMovies={setOnShortMovies}
+                  handleShortMovies={handleShortMovies}
                 />
                 <Footer />
               </>
@@ -266,7 +279,10 @@ function App() {
                   element={SavedMovies}
                   isMyMovies={isMyMovies}
                   handleClick={handleClick}
-                  roundedVisibleCardCount={roundedVisibleCardCount} />
+                  roundedVisibleCardCount={roundedVisibleCardCount}
+                  onShortMovies={onShortMovies}
+                  handleShortMovies={handleShortMovies}
+                />
                 <Footer />
               </>
             }
