@@ -1,26 +1,21 @@
 import './SearchForm.css'
 import Input from '../../Input/Input'
 import FilterCheckbox from './FilterCheckbox/FilterCheckbox';
-import { useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useState } from 'react';
 
 function SearchForm({
   handleReceivingMovies,
   setInputValue,
   onShortMovies,
-  setOnShortMovies,
   handleShortMovies,
-  isMovies,
-  setIsMovies }) {
+  valueInput
 
-  const location = useLocation()
-  //поиск фильмов и запить в гараж
+}) {
+
+  //поиск фильмов и залитие в гараж
   const handleSearchSubmit = (valueInput) => {
     localStorage.setItem('inputValue', valueInput);
   }
-
-  const valueInput = localStorage.getItem('inputValue') === null ?
-    "" : localStorage.getItem('inputValue')
 
   const [errorText, setErrorText] = useState('');
 
@@ -40,16 +35,6 @@ function SearchForm({
     setInputValue(e.target.value);
     handleSearchSubmit(e.target.value)
   };
-
-  useEffect(() => {
-    if (location.pathname === '/movies') {
-      setIsMovies(JSON.parse(localStorage.getItem('movies')) ?
-        JSON.parse(localStorage.getItem('movies')) : [])
-    }
-    // eslint-disable-next-line
-  }, [])
-
-
 
   return (
     <>

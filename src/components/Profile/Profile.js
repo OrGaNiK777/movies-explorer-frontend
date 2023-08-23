@@ -13,7 +13,6 @@ function Profile({ buttonExit, handleUpdateUser }) {
   }
 
   const currentUser = useContext(CurrentUserContext)
-  console.log(currentUser.email)
 
   const error = false
 

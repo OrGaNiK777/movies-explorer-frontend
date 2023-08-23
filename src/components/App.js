@@ -57,6 +57,7 @@ function App() {
   const navigate = useNavigate();
 
   const [isLoading, setIsLoading] = useState(false);
+  const [inputValue, setInputValue] = useState('');
 
   //отправка данных для авторизация
   const [isLogin, setIsLogin] = useState(null);
@@ -94,20 +95,6 @@ function App() {
   //выгрузка данных о пользователе с сервера
   const [currentUser, setCurrentUser] = useState("");
 
-  useEffect(() => {
-    handleTokenCheck()
-    if (isLogin) {
-      Promise.all([mainApi.getUserInfo()])
-        .then(([data]) => {
-          setCurrentUser(data)
-        })
-        .catch((error) => {
-          console.log(error.message);
-        });
-      ;
-    }
-  }, [isLogin])
-
   //отправка данный о пользователе на сервер
   function handleUpdateUser(name, email) {
     setIsLoading(!isLoading);
@@ -122,14 +109,14 @@ function App() {
   }
 
   //выгрузка фильмов с сервера
-  const [isMovies, setIsMovies] = useState([]);
+  const [allMovies, setAllMovies] = useState([]);
 
   function handleReceivingMovies() {
     setIsLoading(!isLoading);
     moviesApi.getMovies()
       .then((item) => {
-        setIsMovies(item)
-        localStorage.setItem('movies', JSON.stringify(item))
+        setAllMovies(item)
+        localStorage.setItem('allMovies', JSON.stringify(item))
       })
       .catch((err) => console.log(err))
       .finally(() => {
@@ -139,28 +126,57 @@ function App() {
 
   //состояние checkbox ShortMovies
   const [onShortMovies, setOnShortMovies] =
-    useState(JSON.parse(localStorage.getItem('onShortMovies')))
+    useState(JSON.parse(localStorage.getItem('onShortMovies')) ?
+      JSON.parse(localStorage.getItem('onShortMovies')) : false)
   function handleShortMovies() {
     setOnShortMovies(!onShortMovies)
     localStorage.setItem('onShortMovies', JSON.stringify(!onShortMovies))
   }
 
-  //выгрузка сохраненных фильмов с сервера
-  const [isMyMovies, setIsMyMovies] = useState([]);
+  //отправка фильмов в сохраненные путем лайка
+  function handleClickLike(movie) {
+    const isLiked = saveMovies.find((i) => (i.movieId === movie.id));
+    console.log(isLiked)
+    !isLiked
+      ? mainApi.postMovies(movie)
+        .then(() => {
+        })
+        .catch((err) => console.log(err))
+        .finally(() => {
+        })
+      : mainApi.deleteMoviesById(isLiked._id)
+        .then(() => {
+        })
+        .catch((err) => console.log(err))
+        .finally(() => {
+        })
+  }
 
-  function handleReceivingMyMovies() {
+  //удаление фильмов из сохраненных путем дизлайка
+  function handleClickDelLike(id) {
+    mainApi.deleteMoviesById(id)
+      .then(() => {
+      })
+      .catch((err) => console.log(err))
+      .finally(() => {
+      })
+  }
+
+
+  //выгрузка сохраненных фильмов с сервера
+  const [saveMovies, setSaveMovies] = useState([]);
+
+  function handleReceivingSaveMovies() {
     setIsLoading(!isLoading);
     mainApi.getMovieCurrentUser()
       .then((item) => {
-        setIsMyMovies(item)
+        setSaveMovies(item);
       })
       .catch((err) => console.log(err))
       .finally(() => {
         setIsLoading(false);
       });
   }
-
-  const [inputValue, setInputValue] = useState('');
 
   //проверка токена
   const handleTokenCheck = () => {
@@ -188,6 +204,21 @@ function App() {
         }
       })
   }
+
+  useEffect(() => {
+    handleTokenCheck()
+    if (isLogin) {
+      Promise.all([mainApi.getUserInfo()])
+        .then(([data]) => {
+          setCurrentUser(data)
+          handleReceivingSaveMovies()
+        })
+        .catch((error) => {
+          console.log(error.message);
+        });
+      ;
+    }
+  }, [isLogin])
 
   //экран загрузки
   if (isLogin === null) {
@@ -253,15 +284,18 @@ function App() {
                   inputValue={inputValue}
                   setInputValue={setInputValue}
                   handleReceivingMovies={handleReceivingMovies}
+                  handleReceivingSaveMovies={handleReceivingSaveMovies}
                   isLogin={isLogin}
-                  setIsMovies={setIsMovies}
+                  setAllMovies={setAllMovies}
                   element={Movies}
-                  isMovies={isMovies}
+                  allMovies={allMovies}
+                  saveMovies={saveMovies}
                   handleClick={handleClick}
                   roundedVisibleCardCount={roundedVisibleCardCount}
                   onShortMovies={onShortMovies}
                   setOnShortMovies={setOnShortMovies}
                   handleShortMovies={handleShortMovies}
+                  handleClickLike={handleClickLike}
                 />
                 <Footer />
               </>
@@ -274,14 +308,16 @@ function App() {
                 <ProtectedRouteElement
                   inputValue={inputValue}
                   setInputValue={setInputValue}
-                  handleReceivingMyMovies={handleReceivingMyMovies}
+                  handleReceivingSaveMovies={handleReceivingSaveMovies}
                   isLogin={isLogin}
                   element={SavedMovies}
-                  isMyMovies={isMyMovies}
+                  allMovies={allMovies}
+                  saveMovies={saveMovies}
                   handleClick={handleClick}
                   roundedVisibleCardCount={roundedVisibleCardCount}
                   onShortMovies={onShortMovies}
                   handleShortMovies={handleShortMovies}
+                  handleClickDelLike={handleClickDelLike}
                 />
                 <Footer />
               </>
