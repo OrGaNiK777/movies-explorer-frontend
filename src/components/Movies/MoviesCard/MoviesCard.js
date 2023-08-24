@@ -1,10 +1,14 @@
 import { useLocation } from 'react-router-dom';
 import "./MoviesCard.css"
+import { useEffect, useState } from 'react';
 
 
 function MovieCard({ movie, handleClickLike, saveMovies, handleClickDelLike }) {
   const location = useLocation()
-  const isLiked = saveMovies.find((i) => (i.movieId === movie.id));
+
+  const [onLike, setOnLike] = useState(false)
+
+  const checkMovies = () => saveMovies.find((i) => (i.movieId === movie.id));
 
   const timing = (duration) => {
     const hours = Math.floor(duration / 60);
@@ -15,11 +19,38 @@ function MovieCard({ movie, handleClickLike, saveMovies, handleClickDelLike }) {
 
   const onAddMovie = () => {
     handleClickLike(movie)
+    setOnLike(true)
   };
 
-  const delMovie = () => {
-    handleClickDelLike(saveMovies.find((i) => (i.movieId))._id)
+  const onDelMovie = () => {
+
+    const myMovie = checkMovies()
+
+    console.log(myMovie)
+    handleClickDelLike(myMovie)
+    setOnLike(false)
+
+  };
+
+  const onDelSaveMovie = () => {
+    handleClickDelLike(movie)
   }
+
+  const searchMyMovie = () => {
+
+    const myMovie = checkMovies()
+
+    if (myMovie) {
+      setOnLike(true);
+    } else {
+      setOnLike(false);
+    }
+  };
+
+  useEffect(() => {
+    searchMyMovie();
+  }, []);
+
   return (
     <article className="moviesCard" >
       <a className='moviesCard_link' href={movie.trailerLink} target="_blank" rel="noreferrer">
@@ -30,12 +61,14 @@ function MovieCard({ movie, handleClickLike, saveMovies, handleClickDelLike }) {
       {(location.pathname === '/movies') ?
         <div className='moviesCard__container-description'>
           <h2 className='moviesCard__title'>{movie.nameRU}</h2>
-          <button id="button" type='button' className={`moviesCard__likes ${isLiked ? "moviesCard__likes_active" : ""}`} onClick={onAddMovie} />
+          <button id="button" type='button' className={`moviesCard__likes 
+          ${onLike ? "moviesCard__likes_active" : ""}`} onClick={
+              onLike ? onDelMovie : onAddMovie} />
           <p className='moviesCard__duration'>{timing(movie.duration)}</p>
         </div> :
         <div className='moviesCard__container-description'>
           <h2 className='moviesCard__title'>{movie.nameRU}</h2>
-          <button id="button" type='button' className="moviesCard__likes moviesCard__likes_active moviesCard__likes_hover" onClick={delMovie} />
+          <button id="button" type='button' className="moviesCard__likes moviesCard__likes_active moviesCard__likes_hover" onClick={onDelSaveMovie} />
           <p className='moviesCard__duration'>{timing(movie.duration)}</p>
         </div>}
     </article>

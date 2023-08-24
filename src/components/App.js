@@ -1,6 +1,6 @@
 import './App.css';
 import { useEffect, useState } from "react";
-import { Route, Routes, useNavigate } from "react-router-dom";
+import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
 
 import Header from "./Header/Header"
 import Main from "./Main/Main"
@@ -55,6 +55,7 @@ function App() {
   //----------------------------------------------------------
 
   const navigate = useNavigate();
+  const location = useLocation()
 
   const [isLoading, setIsLoading] = useState(false);
   const [inputValue, setInputValue] = useState('');
@@ -135,31 +136,21 @@ function App() {
 
   //отправка фильмов в сохраненные путем лайка
   function handleClickLike(movie) {
-    const isLiked = saveMovies.find((i) => (i.movieId === movie.id));
-    console.log(isLiked)
-    !isLiked
-      ? mainApi.postMovies(movie)
-        .then(() => {
-        })
-        .catch((err) => console.log(err))
-        .finally(() => {
-        })
-      : mainApi.deleteMoviesById(isLiked._id)
-        .then(() => {
-        })
-        .catch((err) => console.log(err))
-        .finally(() => {
-        })
+    mainApi.postMovies(movie)
+      .then(() => {
+        setSaveMovies([...saveMovies, allMovies]);
+      })
+      .catch((err) => console.log(err))
   }
 
   //удаление фильмов из сохраненных путем дизлайка
-  function handleClickDelLike(id) {
-    mainApi.deleteMoviesById(id)
+  function handleClickDelLike(movie) {
+    mainApi.deleteMoviesById(movie._id)
       .then(() => {
+        const newCard = saveMovies.filter((item) => item.movieId !== movie.movieId);
+        setSaveMovies(newCard);
       })
       .catch((err) => console.log(err))
-      .finally(() => {
-      })
   }
 
 
@@ -212,13 +203,14 @@ function App() {
         .then(([data]) => {
           setCurrentUser(data)
           handleReceivingSaveMovies()
+
         })
         .catch((error) => {
           console.log(error.message);
         });
       ;
     }
-  }, [isLogin])
+  }, [isLogin, location])
 
   //экран загрузки
   if (isLogin === null) {
@@ -296,6 +288,7 @@ function App() {
                   setOnShortMovies={setOnShortMovies}
                   handleShortMovies={handleShortMovies}
                   handleClickLike={handleClickLike}
+                  handleClickDelLike={handleClickDelLike}
                 />
                 <Footer />
               </>

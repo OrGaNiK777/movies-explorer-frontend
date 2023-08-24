@@ -14,7 +14,8 @@ function Movies({
   setInputValue,
   onShortMovies,
   handleShortMovies,
-  handleClickLike
+  handleClickLike,
+  handleClickDelLike
 }) {
   const location = useLocation()
   //получение короткометражных фильмов 
@@ -51,6 +52,7 @@ function Movies({
             movie={movie}
             key={movie.id}
             handleClickLike={handleClickLike}
+            handleClickDelLike={handleClickDelLike}
           />))}</MoviesCardList>
     </>
   );
