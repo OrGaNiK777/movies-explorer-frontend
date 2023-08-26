@@ -21,7 +21,7 @@ function Movies({
 }) {
 
   const [textSearchAllMovies, setTextSearchAllMovies] = useState("")
-
+  //поиск
   const filterNameFilm = textSearchAllMovies ?
     allMovies.filter(((name) => {
       return !(name.nameRU && name.nameEN)
@@ -29,6 +29,7 @@ function Movies({
         .indexOf(textSearchAllMovies.toLowerCase().replace(/ /g, ""))
     })) : []
 
+  //получение короткометражных фильмов 
   const listMovies = !onShortMovies
     ?
     filterNameFilm.filter(

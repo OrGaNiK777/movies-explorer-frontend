@@ -52,7 +52,6 @@ function SearchForm({
         setErrorText('Нужно ввести ключевое слово');
       }
     }
-
   };
 
   const handleInputChange = (e) => {
@@ -69,13 +68,14 @@ function SearchForm({
         setTextSearchAllMovies(valueInput)
       }
     }
+
     if (location.pathname === '/saved-movies') {
       setErrorText('')
       handleReceivingSaveMovies()
       setIsLoading(true)
       setTextSearchSaveMovies(valueInput)
     }// eslint-disable-next-line
-  }, [])
+  }, [location])
 
   return (
     <>
