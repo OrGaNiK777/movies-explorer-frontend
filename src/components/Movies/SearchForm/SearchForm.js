@@ -28,7 +28,7 @@ function SearchForm({
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    
+
     if (location.pathname === '/movies') {
       if (valueInput ? /[a-zA-Z0-9а-яёА-ЯЁ]/gi.test(valueInput) : "") {
         setErrorText('');
@@ -70,12 +70,10 @@ function SearchForm({
       }
     }
     if (location.pathname === '/saved-movies') {
-      if (valueInput ? /[a-zA-Z0-9а-яёА-ЯЁ]/gi.test(valueInput) : "") {
-        setErrorText('')
-        handleReceivingSaveMovies()
-        setIsLoading(true)
-        setTextSearchSaveMovies(valueInput)
-      }
+      setErrorText('')
+      handleReceivingSaveMovies()
+      setIsLoading(true)
+      setTextSearchSaveMovies(valueInput)
     }// eslint-disable-next-line
   }, [])
 

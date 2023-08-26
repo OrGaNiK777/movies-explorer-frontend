@@ -19,13 +19,13 @@ function SavedMovies({
   valueInput
 }) {
   const [textSearchSaveMovies, setTextSearchSaveMovies] = useState("")
-  
+
   //получение короткометражных фильмов 
   const filterNameFilm = textSearchSaveMovies ?
     saveMovies.filter(((name) => {
       return !(name.nameRU && name.nameEN)
         .toLowerCase().replace(/ /g, "")
-        .indexOf(textSearchSaveMovies.toLowerCase().replace(/ /g, ""))
+        .indexOf(valueInput ? textSearchSaveMovies.toLowerCase().replace(/ /g, "") : "")
     })) : []
 
   const listMovies = !onShortMovies
