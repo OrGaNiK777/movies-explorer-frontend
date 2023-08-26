@@ -87,7 +87,7 @@ class Api {
 
 const api = new Api({
 	//url: "http://localhost:4000",
-	url: "http://api.movies.exporer.diplom.nomoreparties.co",
+	url: "https://api.movies.exporer.diplom.nomoreparties.co",
 	headers: {
 		"Content-Type": "application/json"
 	},

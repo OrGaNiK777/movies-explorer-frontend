@@ -1,4 +1,4 @@
-const url = "http://api.movies.exporer.diplom.nomoreparties.co";
+const url = "https://api.movies.exporer.diplom.nomoreparties.co";
 //const url = "http://localhost:4000";
 const headers = {
 	Accept: "application/json",
