@@ -58,10 +58,16 @@ function App() {
   const location = useLocation()
 
   const [isLoading, setIsLoading] = useState(false);
+
   const [inputValue, setInputValue] = useState('');
 
-  //отправка данных для авторизация
+  const valueInput = localStorage.getItem('inputValue') === null ?
+    "" : localStorage.getItem('inputValue')
+
   const [isLogin, setIsLogin] = useState(null);
+
+  //отправка данных для авторизация
+  const [updateLoginStatus, setUpdateLoginStatus] = useState("");
 
   function handleLoginSubmit(email, password) {
     setIsLoading(!isLoading);
@@ -70,13 +76,23 @@ function App() {
         handleTokenCheck()
         navigate("/movies");
       })
-      .catch((err) => console.log(err))
+      .catch((err) => {
+        console.log(err)
+        if (err === "Ошибка: 401") {
+          setUpdateLoginStatus(`Не верный E-mail или пароль`)
+        }
+        if (err === "Ошибка: 400") {
+          setUpdateLoginStatus("При авторизации произошла ошибка")
+        }
+      })
       .finally(() => {
         setIsLoading(false);
       });
   }
 
   //отправка данных для регистрации
+  const [updateRegisterStatus, setUpdateRegisterStatus] = useState("");
+
   function handleRegisterSubmit(email, password, name) {
     setIsLoading(!isLoading);
     apiAuth.register(email, password, name)
@@ -86,7 +102,13 @@ function App() {
         }
       })
       .catch((err) => {
-        console.log(err);
+        console.log(err)
+        if (err === "Ошибка: 409") {
+          setUpdateRegisterStatus(`Пользователь ${email} уже существует`)
+        }
+        if (err === "Ошибка: 400") {
+          setUpdateRegisterStatus("При регистрации произошла ошибка")
+        }
       })
       .finally(() => {
         setIsLoading(false);
@@ -97,15 +119,31 @@ function App() {
   const [currentUser, setCurrentUser] = useState("");
 
   //отправка данный о пользователе на сервер
+  const [isSuccessUpdate, setIsSuccessUpdate] = useState(false);
+  const [updateUserStatus, setUpdateUserStatus] = useState('');
+
   function handleUpdateUser(name, email) {
     setIsLoading(!isLoading);
     mainApi.patchUserInfo(name, email)
       .then((data) => {
         setCurrentUser(data);
+        setIsSuccessUpdate(true);
+        setUpdateUserStatus('Данные успешно изменены.');
       })
-      .catch((err) => console.log(err))
+      .catch((err) => {
+        console.log(err)
+        setIsSuccessUpdate(false)
+        if (err === "Ошибка: 409") {
+          setUpdateUserStatus(`Пользователь ${email} занят`)
+        }
+        if (err === "Ошибка: 500") {
+          setUpdateUserStatus("При обновлении данных произошла ошибка")
+        }
+
+      })
       .finally(() => {
         setIsLoading(false);
+        ;
       });
   }
 
@@ -153,7 +191,6 @@ function App() {
       .catch((err) => console.log(err))
   }
 
-
   //выгрузка сохраненных фильмов с сервера
   const [saveMovies, setSaveMovies] = useState([]);
 
@@ -192,6 +229,7 @@ function App() {
         if (data) {
           setIsLogin(false);
           localStorage.clear()
+          navigate("/")
         }
       })
   }
@@ -210,6 +248,7 @@ function App() {
         });
       ;
     }
+    // eslint-disable-next-line
   }, [isLogin, location])
 
   //экран загрузки
@@ -231,6 +270,7 @@ function App() {
             path="/signin"
             element={
               <Login
+                updateLoginStatus={updateLoginStatus}
                 handleLoginSubmit={handleLoginSubmit}
                 isLoading={isLoading} />
             }
@@ -239,6 +279,7 @@ function App() {
             path="/signup"
             element={
               <Register
+                updateRegisterStatus={updateRegisterStatus}
                 handleRegisterSubmit={handleRegisterSubmit}
                 isLoading={isLoading} />
             }
@@ -263,9 +304,13 @@ function App() {
             element={
               <ProtectedRouteElement
                 isLogin={{ isLogin }}
+                isLoading={isLoading}
                 element={Profile}
                 buttonExit={signOut}
                 handleUpdateUser={handleUpdateUser}
+                updateUserStatus={updateUserStatus}
+                setUpdateUserStatus={setUpdateUserStatus}
+                isSuccessUpdate={isSuccessUpdate}
               />}
           ></Route>
           <Route
@@ -273,10 +318,11 @@ function App() {
             element={
               <>
                 <ProtectedRouteElement
+                  isLoading={isLoading}
+                  setIsLoading={setIsLoading}
                   inputValue={inputValue}
                   setInputValue={setInputValue}
                   handleReceivingMovies={handleReceivingMovies}
-                  handleReceivingSaveMovies={handleReceivingSaveMovies}
                   isLogin={isLogin}
                   setAllMovies={setAllMovies}
                   element={Movies}
@@ -289,6 +335,7 @@ function App() {
                   handleShortMovies={handleShortMovies}
                   handleClickLike={handleClickLike}
                   handleClickDelLike={handleClickDelLike}
+                  valueInput={valueInput}
                 />
                 <Footer />
               </>
@@ -299,6 +346,8 @@ function App() {
             element={
               <>
                 <ProtectedRouteElement
+                  isLoading={isLoading}
+                  setIsLoading={setIsLoading}
                   inputValue={inputValue}
                   setInputValue={setInputValue}
                   handleReceivingSaveMovies={handleReceivingSaveMovies}
@@ -311,6 +360,7 @@ function App() {
                   onShortMovies={onShortMovies}
                   handleShortMovies={handleShortMovies}
                   handleClickDelLike={handleClickDelLike}
+                  valueInput={valueInput}
                 />
                 <Footer />
               </>

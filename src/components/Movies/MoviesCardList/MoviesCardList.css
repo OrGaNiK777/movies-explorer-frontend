@@ -60,3 +60,28 @@
 		margin-bottom: 136px;
 	}
 }
+.notFound {
+	width: 1140px;
+	margin: auto;
+	margin-top: 150px;
+	margin-bottom: 193px;
+	color: #fff;
+	display: flex;
+	justify-content: center;
+}
+
+@media screen and (max-width: 1279px) {
+	.notFound {
+		width: 708px;
+		margin-top: 170px;
+		margin-bottom: 156px;
+	}
+}
+
+@media screen and (max-width: 767px) {
+	.notFound {
+		width: 300px;
+		margin-top: 150px;
+		margin-bottom: 176px;
+	}
+}

@@ -1,27 +1,29 @@
-import { useRef } from 'react';
 import Input from "../Input/Input";
 import PageWithForm from "../PageWithForm/PageWithForm";
 import { Link } from "react-router-dom";
+import { useFormValid } from '../../hooks/useFormValid';
 
-export default function Register({ handleRegisterSubmit, isLoading }) {
+export default function Register({ handleRegisterSubmit, isLoading, updateRegisterStatus }) {
 
-  const inputEmailRef = useRef();
-  const inputPassRef = useRef();
-  const inputNameRef = useRef();
+  const {
+    handleChange,
+    values,
+    errors,
+    isValid,
+    isValidEmail,
+    isValidName
+
+  } = useFormValid();
 
   function handleSubmit(e) {
     // Запрещаем браузеру переходить по адресу формы
     e.preventDefault();
     handleRegisterSubmit(
-      inputPassRef.current.value,
-      inputEmailRef.current.value,
-      inputNameRef.current.value
+      values.email,
+      values.password,
+      values.name
     );
   }
-
-  const textValid = false
-  const textValid1 = textValid ? textValid : "Проблем нет"
-  const openValid = !textValid1 ? "access-page__mes-error access-page__mes-error_acvive" : "access-page__mes-error"
 
   return (
     <PageWithForm
@@ -41,33 +43,47 @@ export default function Register({ handleRegisterSubmit, isLoading }) {
           </Link>
         </p>
       }
+      statusBtn={isValid === false || isValidName === false || isValidEmail === false || isLoading}
+      disabled={isValid === false || isValidName === false || isValidEmail === false || isLoading}
     >
       <Input
-        useRef={inputNameRef}
+        id="name"
         type="text"
-        classNameInput="access-page__input"
-        classNameValid={openValid}
+        name='name'
+        minLength="2"
+        maxLength="30"
+        classNameInput={errors.name ? "access-page__input access-page__input_error" : "access-page__input"}
+        classNameValid={errors.name ? "access-page__mes-error access-page__mes-error_acvive" : "access-page__mes-error"}
         classNameInputСontent="access-page__input-content"
         InputСontent="Имя"
-        TextValid={textValid1}
+        TextValid={errors.name}
+        onChange={handleChange}
+        placeholder=""
       ></Input>
       <Input
-        useRef={inputEmailRef}
-        type="text"
-        classNameInput="access-page__input"
-        classNameValid={openValid}
+        id="email"
+        type="email"
+        name='email'
+        classNameInput={errors.email ? "access-page__input access-page__input_error" : "access-page__input"}
+        classNameValid={errors.email ? "access-page__mes-error access-page__mes-error_acvive" : "access-page__mes-error"}
         classNameInputСontent="access-page__input-content"
         InputСontent="E-mail"
-        TextValid={textValid1}
+        TextValid={errors.email}
+        onChange={handleChange}
+        placeholder="index@mail.ru"
       ></Input>
       <Input
-        useRef={inputPassRef}
-        type="text"
-        classNameInput="access-page__input"
-        classNameValid={openValid}
+        id="password"
+        type="password"
+        name="password"
+        minLength="8"
+        classNameInput={errors.password ? "access-page__input access-page__input_error" : "access-page__input"}
+        classNameValid={errors.password || updateRegisterStatus ? "access-page__mes-error access-page__mes-error_acvive" : "access-page__mes-error"}
         classNameInputСontent="access-page__input-content"
         InputСontent="Пароль"
-        TextValid={textValid1}
+        TextValid={errors.password ? errors.password : updateRegisterStatus}
+        onChange={handleChange}
+        placeholder="Введите пароль"
       ></Input>
     </PageWithForm>
   );

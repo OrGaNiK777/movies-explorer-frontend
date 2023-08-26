@@ -1,8 +1,7 @@
 import MoviesCardList from './MoviesCardList/MoviesCardList';
 import SeachForm from "./SearchForm/SearchForm";
 import MoviesCard from './MoviesCard/MoviesCard'
-import { useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useState } from 'react';
 
 function Movies({
   saveMovies,
@@ -15,37 +14,49 @@ function Movies({
   onShortMovies,
   handleShortMovies,
   handleClickLike,
-  handleClickDelLike
+  handleClickDelLike,
+  isLoading,
+  setIsLoading,
+  valueInput
 }) {
-  const location = useLocation()
-  //получение короткометражных фильмов 
-  const listMovies = !onShortMovies ? allMovies.filter(
-    (function (item) {
-      return item.duration < "53" //из википедии фильмы 52 минуты и меньше считаются короткометражными
-    })) : allMovies
 
-  const valueInput = localStorage.getItem('inputValue') === null ?
-    "" : localStorage.getItem('inputValue')
+  const [textSearchAllMovies, setTextSearchAllMovies] = useState("")
 
-  useEffect(() => {
-    if (location.pathname === '/movies') {
-      setAllMovies((JSON.parse(localStorage.getItem('allMovies')
-        && !!valueInput)) ? JSON.parse(localStorage.getItem('allMovies')) : [])
-    }// eslint-disable-next-line
-  }, [])
+  const filterNameFilm = textSearchAllMovies ?
+    allMovies.filter(((name) => {
+      return !(name.nameRU && name.nameEN)
+        .toLowerCase().replace(/ /g, "")
+        .indexOf(textSearchAllMovies.toLowerCase().replace(/ /g, ""))
+    })) : []
+
+  const listMovies = !onShortMovies
+    ?
+    filterNameFilm.filter(
+      ((item) => {
+        return item.duration < "40"
+      }))
+    :
+    filterNameFilm
+
+
   return (
     <>
       <SeachForm
+        setIsLoading={setIsLoading}
         handleReceivingMovies={handleReceivingMovies}
         setInputValue={setInputValue}
         onShortMovies={onShortMovies}
         handleShortMovies={handleShortMovies}
+        setTextSearchAllMovies={setTextSearchAllMovies}
+        setAllMovies={setAllMovies}
         valueInput={valueInput}
       />
       <MoviesCardList
+        isLoading={isLoading}
         listMovies={listMovies}
         handleClick={handleClick}
-        handleSearchMovies={setInputValue}>
+        handleSearchMovies={setInputValue}
+        valueInput={valueInput}>
         {listMovies?.slice(0, roundedVisibleCardCount).map((movie) => (
           <MoviesCard
             saveMovies={saveMovies}
@@ -53,6 +64,7 @@ function Movies({
             key={movie.id}
             handleClickLike={handleClickLike}
             handleClickDelLike={handleClickDelLike}
+            valueInput={valueInput}
           />))}</MoviesCardList>
     </>
   );

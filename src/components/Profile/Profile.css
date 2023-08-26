@@ -23,7 +23,7 @@
 }
 
 .profile__title {
-	margin:  0;
+	margin: 0;
 	text-align: center;
 	margin-bottom: 107px;
 	color: #fff;
@@ -47,14 +47,23 @@
 }
 
 .profile__form {
+	width: 410px;
 	margin: 0 auto;
 	display: flex;
 	flex-direction: column;
 	align-content: space-between;
 }
 
+@media screen and (max-width: 767px) {
+	.profile__form {
+		width: 260px;
+	}
+}
+
 .profile__input-element {
 	display: flex;
+
+	align-content: space-around;
 	width: 410px;
 	margin-bottom: 1px;
 }
@@ -85,11 +94,10 @@
 	line-height: normal;
 	text-align: right;
 	outline: none;
-	pointer-events: none;
 }
 
-.profile__input_active {
-	pointer-events: all;
+.profile__input_error {
+	color: #b41e1e;
 }
 
 .profile__field {
@@ -111,35 +119,24 @@
 }
 
 .profile__mes-error {
-	margin: 0;
+	height: 10px;
+	margin: auto;
 	color: #ff004c;
-	text-align: center;
 	font-size: 11px;
 	font-style: normal;
 	font-weight: 400;
 	line-height: normal;
-	opacity: 0;
-	position: absolute;
-	left: 608px;
-	bottom: 270px;
+	margin-top: 172px;
 }
 
 @media screen and (max-width: 1279px) {
 	.profile__mes-error {
-		left: 608px;
-		bottom: 270px;
+		margin-top: 162px;
 	}
 }
 
-@media screen and (max-width: 767px) {
-	.profile__mes-error {
-		left: 608px;
-		bottom: 270px;
-	}
-}
-
-.profile__mes-error_acvive {
-	opacity: 1;
+.profile__mes_good {
+	color: #00ff37;
 }
 
 .profile__behaviour {
@@ -149,7 +146,7 @@
 
 .profile__edit {
 	margin: 0;
-	margin-top: 204px;
+	margin-top: 17px;
 	color: #fff;
 	text-align: center;
 	font-size: 13px;
@@ -162,14 +159,11 @@
 
 @media screen and (max-width: 1279px) {
 	.profile__edit {
-		margin-top: 194px;
 	}
 }
 
 @media screen and (max-width: 767px) {
 	.profile__edit {
-		font-size: 12px;
-		margin-top: 363px;
 	}
 }
 
@@ -186,7 +180,7 @@
 }
 
 .profile__button-submit {
-	margin-top: 205px;
+	margin-top: 17px;
 	border: none;
 	width: 410px;
 	height: 45px;
@@ -200,10 +194,14 @@
 	font-weight: 500;
 	line-height: normal;
 }
+.profile__button-submit_disabled {
+	pointer-events: none;
+	background: #f8f8f8;
+	color: #000;
+}
 
 @media screen and (max-width: 767px) {
 	.profile__button-submit {
-		margin-top: 363px;
 		width: 260px;
 	}
 }
