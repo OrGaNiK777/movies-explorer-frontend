@@ -86,7 +86,7 @@ class Api {
 }
 
 const api = new Api({
-	url: "api.movies.exporer.diplom.nomoreparties.co",
+	url: "https://api.movies.exporer.diplom.nomoreparties.co/",
 	headers: {
 		"Content-Type": "application/json"
 	},

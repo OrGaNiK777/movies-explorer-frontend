@@ -1,4 +1,4 @@
-const url = " https://api.nomoreparties.co/beatfilm-movies";
+const url = "https://api.nomoreparties.co/beatfilm-movies";
 const headers = {
   "Content-Type": "application/json",
 };
