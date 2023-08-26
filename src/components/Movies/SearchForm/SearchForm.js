@@ -28,15 +28,17 @@ function SearchForm({
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    
+    if (location.pathname === '/movies') {
+      if (valueInput ? /[a-zA-Z0-9а-яёА-ЯЁ]/gi.test(valueInput) : "") {
+        setErrorText('');
+        handleReceivingMovies()
+        setIsLoading(true)
+        setTextSearchAllMovies(valueInput)
 
-    if (valueInput ? /[a-zA-Z0-9а-яёА-ЯЁ]/gi.test(valueInput) : "") {
-      setErrorText('');
-      handleReceivingMovies()
-      setIsLoading(true)
-      setTextSearchAllMovies(valueInput)
-
-    } else {
-      setErrorText('Нужно ввести ключевое слово');
+      } else {
+        setErrorText('Нужно ввести ключевое слово');
+      }
     }
 
     if (location.pathname === '/saved-movies') {

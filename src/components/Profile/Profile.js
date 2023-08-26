@@ -36,7 +36,6 @@ function Profile({ buttonExit, handleUpdateUser, isLoading, isSuccessUpdate, upd
     event.preventDefault();
     handleUpdateUser(values.name, values.email);
   }
-  console.log(isSuccessUpdate)
   useEffect(() => {
     resetForm();
     setValues({
@@ -47,7 +46,14 @@ function Profile({ buttonExit, handleUpdateUser, isLoading, isSuccessUpdate, upd
       setEnableButton(false)
     }
     // eslint-disable-next-line
-  }, [setValues, resetForm, isSuccessUpdate]);
+  }, [setValues, resetForm, handleUpdateUser]);
+
+  useEffect(() => {
+    if (isSuccessUpdate) {
+      setEnableButton(false)
+    }
+    // eslint-disable-next-line
+  }, [handleUpdateUser]);
 
   useEffect(() => {
     if (values.email === email && isValidName === true) {
@@ -65,11 +71,7 @@ function Profile({ buttonExit, handleUpdateUser, isLoading, isSuccessUpdate, upd
       setIsValidName(false);
       setIsValid(false);
     }
-
-    // if (isSuccessUpdate) {
-    //   setEnableButton(false)
-    // }
-    // eslint-disable-next-line}
+    // eslint-disable-next-line
   }, [isValidName, isValidEmail, values, handleUpdateUser, setIsValid]);
 
   return (

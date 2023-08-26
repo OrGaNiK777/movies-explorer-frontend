@@ -25,8 +25,6 @@ function MovieCard({ movie, handleClickLike, saveMovies, handleClickDelLike }) {
   const onDelMovie = () => {
 
     const myMovie = checkMovies()
-
-    console.log(myMovie)
     handleClickDelLike(myMovie)
     setOnLike(false)
 
@@ -49,6 +47,7 @@ function MovieCard({ movie, handleClickLike, saveMovies, handleClickDelLike }) {
 
   useEffect(() => {
     searchMyMovie();
+     // eslint-disable-next-line
   }, []);
 
   return (

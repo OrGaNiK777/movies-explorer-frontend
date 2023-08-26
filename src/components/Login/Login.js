@@ -17,7 +17,6 @@ export default function Login({ isLoading, handleLoginSubmit, updateLoginStatus 
   function handleSubmit(e) {
     // Запрещаем браузеру переходить по адресу формы
     e.preventDefault();
-    console.log(values)
     handleLoginSubmit(
       values.email,
       values.password);

@@ -19,6 +19,7 @@ function SavedMovies({
   valueInput
 }) {
   const [textSearchSaveMovies, setTextSearchSaveMovies] = useState("")
+  
   //получение короткометражных фильмов 
   const filterNameFilm = textSearchSaveMovies ?
     saveMovies.filter(((name) => {

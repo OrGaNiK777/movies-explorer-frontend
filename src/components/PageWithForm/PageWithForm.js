@@ -10,8 +10,6 @@ function PageWithForm({
   statusBtn,
   disabled
 }) {
-  console.log(statusBtn)
-  console.log(disabled)
   return (
     <section className="access-page">
       <h2 className="access-page__title">{title}</h2>
