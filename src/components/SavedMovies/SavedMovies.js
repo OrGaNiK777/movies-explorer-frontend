@@ -28,7 +28,6 @@ function SavedMovies({
         .toLowerCase().replace(/ /g, "")
         .indexOf(textSearchSaveMovies.toLowerCase().replace(/ /g, ""))
     })) : saveMovies
-  console.log(textSearchSaveMovies)
   //получение короткометражных фильмов 
   const listMovies = !onShortMovies
     ?

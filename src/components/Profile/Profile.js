@@ -111,8 +111,8 @@ function Profile({ buttonExit, handleUpdateUser, isLoading, isSuccessUpdate, upd
             disabled={!enableButton}
           />
         </div>
-        <span className={errors.email ? "profile__mes-error" : "profile__mes-error profile__mes_good"}>
-          {errors.email ? errors.email : updateUserStatus}
+        <span className={errors.email || errors.name ? "profile__mes-error" : "profile__mes-error profile__mes_good"}>
+          {errors.name ? errors.name : errors.email ? errors.email : updateUserStatus}
         </span>
         {!enableButton
           ? <div className={`profile__behaviour`}>
