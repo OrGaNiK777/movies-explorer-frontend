@@ -7,47 +7,59 @@ import { useLocation } from 'react-router-dom';
 function SearchForm({
   handleReceivingSaveMovies,
   handleReceivingMovies,
-  setInputValue,
+  inputValueAllMovies,
+  setInputValueAllMovies,
+  inputValueSaveMovies,
+  setInputValueSaveMovies,
   onShortMovies,
   handleShortMovies,
   setIsLoading,
   setTextSearchAllMovies,
-  setTextSearchSaveMovies,
-  valueInput
+  setTextSearchSaveMovies
 }) {
   const location = useLocation()
 
   //поиск фильмов и залитие в гараж
   const handleSearchSubmit = (valueInput) => {
-    valueInput
-      ? localStorage.setItem('inputValue', valueInput)
-      : localStorage.removeItem('inputValue');
+    if (location.pathname === '/movies') {
+      valueInput
+        ? localStorage.setItem('valueInputAllMovies', valueInput)
+        : localStorage.removeItem('valueInputAllMovies');
+    }
+    if (location.pathname === '/saved-movies') {
+      valueInput
+        ? localStorage.setItem('valueInputSaveMovies', valueInput)
+        : localStorage.removeItem('valueInputSaveMovies');
+    }
   }
+
+  const valueInputAllMovies = localStorage.getItem('valueInputAllMovies') === null ?
+    "" : localStorage.getItem('valueInputAllMovies')
+
+  const valueInputSaveMovies = localStorage.getItem('valueInputSaveMovies') === null ?
+    "" : localStorage.getItem('valueInputSaveMovies')
 
   const [errorText, setErrorText] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    if (location.pathname === '/movies') {
-      if (valueInput ? /[a-zA-Z0-9а-яёА-ЯЁ]/gi.test(valueInput) : "") {
+      if (location.pathname === '/movies') {
+      if (/[a-zA-Z0-9а-яёА-ЯЁ]/gi.test(inputValueAllMovies)) {
+        setTextSearchAllMovies(inputValueAllMovies)
         setErrorText('');
         handleReceivingMovies()
         setIsLoading(true)
-        setTextSearchAllMovies(valueInput)
-
       } else {
         setErrorText('Нужно ввести ключевое слово');
       }
     }
 
     if (location.pathname === '/saved-movies') {
-      if (valueInput ? /[a-zA-Z0-9а-яёА-ЯЁ]/gi.test(valueInput) : "") {
+      if (/[a-zA-Z0-9а-яёА-ЯЁ]/gi.test(inputValueSaveMovies)) {
+        setTextSearchSaveMovies(inputValueSaveMovies)
         setErrorText('');
         handleReceivingSaveMovies()
         setIsLoading(true)
-        setTextSearchSaveMovies(valueInput)
-
       } else {
         setErrorText('Нужно ввести ключевое слово');
       }
@@ -55,25 +67,30 @@ function SearchForm({
   };
 
   const handleInputChange = (e) => {
-    setInputValue(e.target.value);
-    handleSearchSubmit(e.target.value)
+    if ((location.pathname === '/movies')) {
+      setInputValueAllMovies(e.target.value);
+      handleSearchSubmit(e.target.value)
+    }
+    if ((location.pathname === '/saved-movies')) {
+      setInputValueSaveMovies(e.target.value);
+      handleSearchSubmit(e.target.value)
+    }
   };
 
   useEffect(() => {
     if (location.pathname === '/movies') {
-      if (valueInput ? /[a-zA-Z0-9а-яёА-ЯЁ]/gi.test(valueInput) : "") {
+      if (/[a-zA-Z0-9а-яёА-ЯЁ]/gi.test(valueInputAllMovies)) {
         setErrorText('')
         handleReceivingMovies()
         setIsLoading(true)
-        setTextSearchAllMovies(valueInput)
+        setTextSearchAllMovies(valueInputAllMovies)
       }
     }
-
     if (location.pathname === '/saved-movies') {
       setErrorText('')
       handleReceivingSaveMovies()
       setIsLoading(true)
-      setTextSearchSaveMovies(valueInput)
+      setTextSearchSaveMovies(valueInputSaveMovies)
     }// eslint-disable-next-line
   }, [location])
 
@@ -87,7 +104,7 @@ function SearchForm({
           required
           TextValid={errorText}
           classNameValid={errorText ? "searchForm__mes-error searchForm__mes-error_acvive" : "searchForm__mes-error"}
-          value={valueInput}
+          value={location.pathname === '/movies' ? valueInputAllMovies : valueInputSaveMovies}
           onChange={handleInputChange}
         >
         </Input>

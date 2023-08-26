@@ -70,6 +70,10 @@
 	justify-content: center;
 }
 
+.notFound_error {
+	color: #a51414;
+}
+
 @media screen and (max-width: 1279px) {
 	.notFound {
 		width: 708px;

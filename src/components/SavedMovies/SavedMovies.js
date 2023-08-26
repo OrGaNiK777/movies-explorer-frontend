@@ -5,19 +5,20 @@ import { useState } from 'react';
 
 function SavedMovies({
   saveMovies,
-  allMovies,
   handleReceivingSaveMovies,
   handleClick,
   roundedVisibleCardCount,
-  setInputValue,
+  inputValueSaveMovies,
+  setInputValueSaveMovies,
   onShortMovies,
   handleShortMovies,
   handleReceivingShortMyMovies,
   handleClickDelLike,
   isLoading,
   setIsLoading,
-  valueInput
+  errorSaveMovies
 }) {
+
   const [textSearchSaveMovies, setTextSearchSaveMovies] = useState("")
 
   //поиск
@@ -27,7 +28,7 @@ function SavedMovies({
         .toLowerCase().replace(/ /g, "")
         .indexOf(textSearchSaveMovies.toLowerCase().replace(/ /g, ""))
     })) : saveMovies
-
+  console.log(textSearchSaveMovies)
   //получение короткометражных фильмов 
   const listMovies = !onShortMovies
     ?
@@ -43,19 +44,18 @@ function SavedMovies({
         setIsLoading={setIsLoading}
         handleReceivingMovies={handleReceivingSaveMovies}
         handleReceivingSaveMovies={handleReceivingSaveMovies}
-        setInputValue={setInputValue}
+        inputValueSaveMovies={inputValueSaveMovies}
+        setInputValueSaveMovies={setInputValueSaveMovies}
         onShortMovies={onShortMovies}
         handleShortMovies={handleShortMovies}
         handleReceivingShortMovies={handleReceivingShortMyMovies}
         allMovies={saveMovies}
-        setTextSearchSaveMovies={setTextSearchSaveMovies}
-        valueInput={valueInput} />
+        setTextSearchSaveMovies={setTextSearchSaveMovies} />
       <MoviesCardList
+        errorMovies={errorSaveMovies}
         isLoading={isLoading}
         listMovies={listMovies}
-        handleClick={handleClick}
-        handleSearchMovies={setInputValue}
-        valueInput={valueInput}>
+        handleClick={handleClick}>
         {listMovies?.slice(0, roundedVisibleCardCount).map((movie) => (
           <MoviesCard
             saveMovies={saveMovies}

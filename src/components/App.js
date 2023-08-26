@@ -59,10 +59,8 @@ function App() {
 
   const [isLoading, setIsLoading] = useState(false);
 
-  const [inputValue, setInputValue] = useState('');
-
-  const valueInput = localStorage.getItem('inputValue') === null ?
-    "" : localStorage.getItem('inputValue')
+  const [inputValueAllMovies, setInputValueAllMovies] = useState('');
+  const [inputValueSaveMovies, setInputValueSaveMovies] = useState('');
 
   const [isLogin, setIsLogin] = useState(null);
 
@@ -134,7 +132,7 @@ function App() {
         console.log(err)
         setIsSuccessUpdate(false)
         if (err === "Ошибка: 409") {
-          setUpdateUserStatus(`Пользователь ${email} занят`)
+          setUpdateUserStatus(`E-mail ${email} занят`)
         }
         if (err === "Ошибка: 500") {
           setUpdateUserStatus("При обновлении данных произошла ошибка")
@@ -149,6 +147,7 @@ function App() {
 
   //выгрузка фильмов с сервера
   const [allMovies, setAllMovies] = useState([]);
+  const [errorAllMovies, setErrorAllMovies] = useState("");
 
   function handleReceivingMovies() {
     setIsLoading(!isLoading);
@@ -157,7 +156,10 @@ function App() {
         setAllMovies(item)
         localStorage.setItem('allMovies', JSON.stringify(item))
       })
-      .catch((err) => console.log(err))
+      .catch((err) => {
+        console.log(err)
+        setErrorAllMovies(true)
+      })
       .finally(() => {
         setIsLoading(false);
       });
@@ -193,6 +195,7 @@ function App() {
 
   //выгрузка сохраненных фильмов с сервера
   const [saveMovies, setSaveMovies] = useState([]);
+  const [errorSaveMovies, setErrorSaveMovies] = useState("");
 
   function handleReceivingSaveMovies() {
     setIsLoading(!isLoading);
@@ -200,7 +203,10 @@ function App() {
       .then((item) => {
         setSaveMovies(item);
       })
-      .catch((err) => console.log(err))
+      .catch((err) => {
+        console.log(err)
+        setErrorSaveMovies(true)
+      })
       .finally(() => {
         setIsLoading(false);
       });
@@ -318,10 +324,11 @@ function App() {
             element={
               <>
                 <ProtectedRouteElement
+                  errorAllMovies={errorAllMovies}
                   isLoading={isLoading}
                   setIsLoading={setIsLoading}
-                  inputValue={inputValue}
-                  setInputValue={setInputValue}
+                  inputValueAllMovies={inputValueAllMovies}
+                  setInputValueAllMovies={setInputValueAllMovies}
                   handleReceivingMovies={handleReceivingMovies}
                   isLogin={isLogin}
                   setAllMovies={setAllMovies}
@@ -335,7 +342,6 @@ function App() {
                   handleShortMovies={handleShortMovies}
                   handleClickLike={handleClickLike}
                   handleClickDelLike={handleClickDelLike}
-                  valueInput={valueInput}
                 />
                 <Footer />
               </>
@@ -346,10 +352,11 @@ function App() {
             element={
               <>
                 <ProtectedRouteElement
+                  errorSaveMovies={errorSaveMovies}
                   isLoading={isLoading}
                   setIsLoading={setIsLoading}
-                  inputValue={inputValue}
-                  setInputValue={setInputValue}
+                  inputValueSaveMovies={inputValueSaveMovies}
+                  setInputValueSaveMovies={setInputValueSaveMovies}
                   handleReceivingSaveMovies={handleReceivingSaveMovies}
                   isLogin={isLogin}
                   element={SavedMovies}
@@ -360,7 +367,6 @@ function App() {
                   onShortMovies={onShortMovies}
                   handleShortMovies={handleShortMovies}
                   handleClickDelLike={handleClickDelLike}
-                  valueInput={valueInput}
                 />
                 <Footer />
               </>

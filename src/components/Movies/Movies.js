@@ -10,17 +10,20 @@ function Movies({
   handleReceivingMovies,
   handleClick,
   roundedVisibleCardCount,
-  setInputValue,
+
   onShortMovies,
   handleShortMovies,
   handleClickLike,
   handleClickDelLike,
   isLoading,
   setIsLoading,
-  valueInput
+  errorAllMovies,
+  inputValueAllMovies,
+  setInputValueAllMovies
 }) {
 
   const [textSearchAllMovies, setTextSearchAllMovies] = useState("")
+
   //поиск
   const filterNameFilm = textSearchAllMovies ?
     allMovies.filter(((name) => {
@@ -39,25 +42,23 @@ function Movies({
     :
     filterNameFilm
 
-
   return (
     <>
       <SeachForm
         setIsLoading={setIsLoading}
         handleReceivingMovies={handleReceivingMovies}
-        setInputValue={setInputValue}
+        inputValueAllMovies={inputValueAllMovies}
+        setInputValueAllMovies={setInputValueAllMovies}
         onShortMovies={onShortMovies}
         handleShortMovies={handleShortMovies}
         setTextSearchAllMovies={setTextSearchAllMovies}
-        setAllMovies={setAllMovies}
-        valueInput={valueInput}
-      />
+        setAllMovies={setAllMovies} />
       <MoviesCardList
+        errorMovies={errorAllMovies}
         isLoading={isLoading}
         listMovies={listMovies}
         handleClick={handleClick}
-        handleSearchMovies={setInputValue}
-        valueInput={valueInput}>
+        handleSearchMovies={setInputValueAllMovies}>
         {listMovies?.slice(0, roundedVisibleCardCount).map((movie) => (
           <MoviesCard
             saveMovies={saveMovies}
@@ -65,7 +66,6 @@ function Movies({
             key={movie.id}
             handleClickLike={handleClickLike}
             handleClickDelLike={handleClickDelLike}
-            valueInput={valueInput}
           />))}</MoviesCardList>
     </>
   );

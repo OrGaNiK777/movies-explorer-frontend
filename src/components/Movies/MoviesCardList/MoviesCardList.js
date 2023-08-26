@@ -1,11 +1,11 @@
 import "./MoviesCardList.css"
 import Preloader from '../Preloader/Preloader';
 
-function MoviesCardList({ children, handleClick, listMovies, isLoading }) {
+function MoviesCardList({ children, handleClick, listMovies, isLoading, errorMovies }) {
 
   return (!isLoading ?
     children.length < 1 ?
-      <p className='notFound'>Ничего не найдено</p> :
+      <p className={!errorMovies ? 'notFound' : 'notFound notFound_error'}>{!errorMovies ? "Ничего не найдено" : "Подождите немного и попробуйте ещё раз"}</p> :
       <div className='moviesCardList'>
         {children}
         <button className={
