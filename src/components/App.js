@@ -303,7 +303,7 @@ function App() {
             path="/profile"
             element={
               <ProtectedRouteElement
-                isLogin={{ isLogin }}
+                isLogin={isLogin}
                 isLoading={isLoading}
                 element={Profile}
                 buttonExit={signOut}
