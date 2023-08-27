@@ -16,9 +16,9 @@ import CurrentUserContext from "../contexts/CurrentUserContext.js";
 
 import { useMediaQuery } from "../hooks/useMediaQuery";
 
-import mainApi from "../utils/MainApi.js";
 import * as apiAuth from "../utils/ApiAuth.js";
 import * as moviesApi from "../utils/MoviesApi.js";
+import * as mainApi from "../utils/MainApi.js";
 
 function App() {
 
@@ -175,12 +175,14 @@ function App() {
   }
 
   //отправка фильмов в сохраненные путем лайка
-  function handleClickLike(movie) {
-    mainApi.postMovies(movie)
-      .then(() => {
-        setSaveMovies([...saveMovies, allMovies]);
-      })
-      .catch((err) => console.log(err))
+  const handleClickLike = async (movie) => {
+    try {
+      const film = await mainApi.postMovies(movie)
+
+      setSaveMovies([...saveMovies, film])
+    } catch (err) {
+      console.log(err)
+    }
   }
 
   //удаление фильмов из сохраненных путем дизлайка

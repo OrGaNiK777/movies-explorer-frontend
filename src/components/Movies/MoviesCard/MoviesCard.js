@@ -8,7 +8,7 @@ function MovieCard({ movie, handleClickLike, saveMovies, handleClickDelLike }) {
 
   const [onLike, setOnLike] = useState(false)
 
-  const checkMovies = () => saveMovies.find((i) => (i.movieId === movie.id));
+  const checkMovies = () => saveMovies.find((i) => (i.movieId === movie.id))
 
   const timing = (duration) => {
     const hours = Math.floor(duration / 60);
@@ -23,12 +23,10 @@ function MovieCard({ movie, handleClickLike, saveMovies, handleClickDelLike }) {
   };
 
   const onDelMovie = () => {
+    const checkMovies1 = checkMovies()
 
-    const saveMovie = checkMovies()
-
-    handleClickDelLike(saveMovie)
+    handleClickDelLike(checkMovies1)
     setOnLike(false)
-
   };
 
   const onDelSaveMovie = () => {
@@ -36,10 +34,8 @@ function MovieCard({ movie, handleClickLike, saveMovies, handleClickDelLike }) {
   }
 
   const searchMyMovie = () => {
-
-    const saveMovie = checkMovies()
-
-    if (saveMovie) {
+    const checkMovies1 = checkMovies()
+    if (checkMovies1) {
       setOnLike(true);
     } else {
       setOnLike(false);

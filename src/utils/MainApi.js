@@ -1,97 +1,81 @@
-class Api {
-	constructor(options) {
-		// тело конструктора
-		this._url = options.url;
-		this._headers = options.headers;
-	}
-
-	// обработка результата ответа сервера
-	_checkingResponse(res) {
-		if (res.ok) {
-			return res.json();
-		}
-		// если ошибка, отклоняем промис
-		return Promise.reject(`Ошибка: ${res.status}`);
-	}
-
-	_request(url, options) {
-		return fetch(url, options).then(this._checkingResponse);
-	}
-
-	//получение данных о пользователе
-	getUserInfo() {
-		return this._request(`${this._url}/users/me`, {
-			headers: this._headers,
-			credentials: 'include',
-		});
-	}
-
-	//обновление данных о пользователе
-	patchUserInfo(name, email) {
-		return this._request(`${this._url}/users/me`, {
-			method: "PATCH",
-			headers: this._headers,
-			credentials: 'include',
-			body: JSON.stringify({ name, email }),
-		});
-	}
-
-	//выгрузка сохраненных фильмов
-	getMovieCurrentUser() {
-		return this._request(`${this._url}/movies`, {
-			headers: this._headers,
-			credentials: 'include',
-		});
-	}
-
-	//отправка данных нового фильма
-	postMovies(data) {
-		return this._request(`${this._url}/movies`, {
-			method: "post",
-			headers: this._headers,
-			credentials: 'include',
-			body: JSON.stringify({
-				country: data.country,
-				director: data.director,
-				duration: data.duration,
-				year: data.year,
-				description: data.description,
-				image: `https://api.nomoreparties.co${data.image.url}`,
-				trailerLink: data.trailerLink,
-				nameRU: data.nameRU,
-				nameEN: data.nameEN,
-				thumbnail: `https://api.nomoreparties.co/${data.image.formats.thumbnail.url}`,
-				movieId: data.id
-			}),
-		});
-	}
-
-	//Удаление фильма
-	deleteMoviesById(id) {
-		return this._request(`${this._url}/movies/${id}`, {
-			method: "DELETE",
-			headers: this._headers,
-			credentials: 'include',
-		});
-	}
-
-	//выход с сайта
-	loginOut() {
-		return this._request(`${this._url}/signout`, {
-			method: "DELETE",
-			headers: this._headers,
-			credentials: 'include',
-		});
-	}
+const url = "https://api.movies.exporer.diplom.nomoreparties.co"
+//const url = "http://localhost:4000"
+const headers = {
+	"Content-Type": "application/json"
 }
 
-const api = new Api({
-	//url: "http://localhost:4000",
-	url: "https://api.movies.exporer.diplom.nomoreparties.co",
-	headers: {
-		"Content-Type": "application/json"
-	},
-},
-);
+// обработка результата ответа сервера
+export const checkingResponse = (res) => {
+	if (res.ok) {
+		return res.json();
+	}
+	// если ошибка, отклоняем промис
+	return Promise.reject(`Ошибка: ${res.status}`);
+}
 
-export default api;
+//получение данных о пользователе
+export const getUserInfo = () => {
+	return fetch(`${url}/users/me`, {
+		headers: headers,
+		credentials: 'include',
+	}).then((res) => checkingResponse(res));
+}
+
+//обновление данных о пользователе
+export function patchUserInfo(name, email) {
+	return fetch(`${url}/users/me`, {
+		method: "PATCH",
+		headers: headers,
+		credentials: 'include',
+		body: JSON.stringify({ name, email }),
+	}).then((res) => checkingResponse(res));
+}
+
+//выгрузка сохраненных фильмов
+export function getMovieCurrentUser() {
+	return fetch(`${url}/movies`, {
+		headers: headers,
+		credentials: 'include',
+	}).then((res) => checkingResponse(res));
+}
+
+//отправка данных нового фильма
+export const postMovies = async (data) => {
+	const res = await fetch(`${url}/movies`, {
+		method: "post",
+		headers: headers,
+		credentials: 'include',
+		body: JSON.stringify({
+			country: data.country,
+			director: data.director,
+			duration: data.duration,
+			year: data.year,
+			description: data.description,
+			image: `https://api.nomoreparties.co${data.image.url}`,
+			trailerLink: data.trailerLink,
+			nameRU: data.nameRU,
+			nameEN: data.nameEN,
+			thumbnail: `https://api.nomoreparties.co/${data.image.formats.thumbnail.url}`,
+			movieId: data.id
+		}),
+	});
+	return checkingResponse(res);
+}
+
+//Удаление фильма
+export function deleteMoviesById(id) {
+	return fetch(`${url}/movies/${id}`, {
+		method: "DELETE",
+		headers: headers,
+		credentials: 'include',
+	}).then((res) => checkingResponse(res));
+}
+
+//выход с сайта
+export function loginOut() {
+	return fetch(`${url}/signout`, {
+		method: "DELETE",
+		headers: headers,
+		credentials: 'include',
+	}).then((res) => checkingResponse(res));
+}

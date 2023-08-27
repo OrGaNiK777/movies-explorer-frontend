@@ -22,14 +22,14 @@ function SavedMovies({
   const [textSearchSaveMovies, setTextSearchSaveMovies] = useState("")
 
   //поиск
-  const filterNameFilm = textSearchSaveMovies ?
+  const filterNameFilm =  textSearchSaveMovies ?
     saveMovies.filter(((name) => {
-      return !(name.nameRU && name.nameEN)
+      return !((name.nameRU && name.nameEN) === undefined ? "" : (name.nameRU && name.nameEN))
         .toLowerCase().replace(/ /g, "")
         .indexOf(textSearchSaveMovies.toLowerCase().replace(/ /g, ""))
     })) : saveMovies
   //получение короткометражных фильмов 
-  const listMovies = !onShortMovies
+  const listMovies =  !onShortMovies
     ?
     filterNameFilm.filter(
       ((item) => {

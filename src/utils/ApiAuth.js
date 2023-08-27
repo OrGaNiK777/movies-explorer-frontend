@@ -13,27 +13,30 @@ function checkingResponse(res) {
 	return Promise.reject(`Ошибка: ${res.status}`);
 }
 
-export const register = (email, password, name) => {
-	return fetch(`${url}/signup`, {
+export const register = async (email, password, name) => {
+	const res = await fetch(`${url}/signup`, {
 		method: "POST",
 		headers: headers,
 		body: JSON.stringify({ password, email, name }),
-	}).then((res) => checkingResponse(res));
+	});
+	return checkingResponse(res);
 };
 
-export const authorize = (email, password) => {
-	return fetch(`${url}/signin`, {
+export const authorize = async (email, password) => {
+	const res = await fetch(`${url}/signin`, {
 		method: "POST",
 		headers: headers,
 		credentials: 'include',
 		body: JSON.stringify({ email, password }),
-	}).then((res) => checkingResponse(res));
+	});
+	return checkingResponse(res);
 };
 
-export const checkToken = () => {
-	return fetch(`${url}/users/me`, {
+export const checkToken = async () => {
+	const res = await fetch(`${url}/users/me`, {
 		method: "GET",
 		headers: headers,
 		credentials: 'include',
-	}).then((res) => { return checkingResponse(res) });
+	});
+	return checkingResponse(res);
 };
