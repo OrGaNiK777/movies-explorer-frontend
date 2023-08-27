@@ -157,14 +157,8 @@
 	cursor: pointer;
 }
 
-@media screen and (max-width: 1279px) {
-	.profile__edit {
-	}
-}
-
-@media screen and (max-width: 767px) {
-	.profile__edit {
-	}
+.profile__edit:hover {
+	opacity: 0.7;
 }
 
 .profile__signout {
@@ -177,6 +171,11 @@
 	font-weight: 500;
 	line-height: normal;
 	text-decoration: none;
+	cursor: pointer;
+}
+
+.profile__signout:hover {
+	opacity: 0.7;
 }
 
 .profile__button-submit {
@@ -194,6 +193,11 @@
 	font-weight: 500;
 	line-height: normal;
 }
+
+.profile__button-submit:hover {
+	opacity: 0.7;
+}
+
 .profile__button-submit_disabled {
 	pointer-events: none;
 	background: #f8f8f8;

@@ -59,6 +59,9 @@ function App() {
 
   const [isLoading, setIsLoading] = useState(false);
 
+  const [isInputAllMovies, setIsInputAllMovies] = useState("");
+  const [isInputSaveMovies, setIsInputSaveMovies] = useState("");
+
   const [isLogin, setIsLogin] = useState(null);
 
   //отправка данных для авторизация
@@ -233,7 +236,7 @@ function App() {
       .then((data) => {
         if (data) {
           setIsLogin(false);
-          localStorage.clear()
+          localStorage.clear();
           navigate("/")
         }
       })
@@ -323,6 +326,8 @@ function App() {
             element={
               <>
                 <ProtectedRouteElement
+                  isInputAllMovies={isInputAllMovies}
+                  setIsInputAllMovies={setIsInputAllMovies}
                   errorAllMovies={errorAllMovies}
                   isLoading={isLoading}
                   setIsLoading={setIsLoading}
@@ -349,6 +354,8 @@ function App() {
             element={
               <>
                 <ProtectedRouteElement
+                  isInputSaveMovies={isInputSaveMovies}
+                  setIsInputSaveMovies={setIsInputSaveMovies}
                   errorSaveMovies={errorSaveMovies}
                   isLoading={isLoading}
                   setIsLoading={setIsLoading}

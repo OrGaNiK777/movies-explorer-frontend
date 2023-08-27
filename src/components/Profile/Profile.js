@@ -117,7 +117,7 @@ function Profile({ buttonExit, handleUpdateUser, isLoading, isSuccessUpdate, upd
         {!enableButton
           ? <div className={`profile__behaviour`}>
             <p className='profile__edit' onClick={() => { toggleButton() }}>Редактировать</p>
-            <a className='profile__signout' href='/' onClick={buttonExit}>Выйти из аккаунта</a>
+            <p className='profile__signout' onClick={buttonExit}>Выйти из аккаунта</p>
           </div >
           : <button className={
             isValid === false || isValidName === false || isValidEmail === false || isLoading

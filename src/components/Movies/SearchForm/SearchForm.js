@@ -7,13 +7,15 @@ import { useLocation } from 'react-router-dom';
 function SearchForm({
   handleReceivingSaveMovies,
   handleReceivingMovies,
-  setInputValueAllMovies,
-  setInputValueSaveMovies,
+  isInputAllMovies,
+  setIsInputAllMovies,
   onShortMovies,
   handleShortMovies,
   setIsLoading,
   setTextSearchAllMovies,
-  setTextSearchSaveMovies
+  setTextSearchSaveMovies,
+  isInputSaveMovies,
+  setIsInputSaveMovies
 }) {
   const location = useLocation()
 
@@ -43,7 +45,7 @@ function SearchForm({
     e.preventDefault();
     if (location.pathname === '/movies') {
       if (/[a-zA-Z0-9а-яёА-ЯЁ]/gi.test(valueInputAllMovies)) {
-        setTextSearchAllMovies(valueInputAllMovies)
+        setTextSearchAllMovies(isInputAllMovies ? isInputAllMovies : valueInputAllMovies)
         setErrorText('');
         handleReceivingMovies()
         setIsLoading(true)
@@ -54,7 +56,7 @@ function SearchForm({
 
     if (location.pathname === '/saved-movies') {
       if (/[a-zA-Z0-9а-яёА-ЯЁ]/gi.test(valueInputSaveMovies)) {
-        setTextSearchSaveMovies(valueInputSaveMovies)
+        setTextSearchSaveMovies(isInputSaveMovies ? isInputSaveMovies : valueInputSaveMovies)
         setErrorText('');
         handleReceivingSaveMovies()
         setIsLoading(true)
@@ -66,12 +68,12 @@ function SearchForm({
 
   const handleInputChange = (e) => {
     if ((location.pathname === '/movies')) {
-      setInputValueAllMovies(e.target.value);
       handleSearchSubmit(e.target.value)
+      setIsInputAllMovies(e.target.value)
     }
     if ((location.pathname === '/saved-movies')) {
-      setInputValueSaveMovies(e.target.value);
       handleSearchSubmit(e.target.value)
+      setIsInputSaveMovies(e.target.value)
     }
   };
 
@@ -102,7 +104,7 @@ function SearchForm({
           required
           TextValid={errorText}
           classNameValid={errorText ? "searchForm__mes-error searchForm__mes-error_acvive" : "searchForm__mes-error"}
-          defaultValue={location.pathname === '/movies' ? valueInputAllMovies : valueInputSaveMovies}
+          value={location.pathname === '/movies' ? valueInputAllMovies : valueInputSaveMovies}
           onChange={handleInputChange}
         >
         </Input>

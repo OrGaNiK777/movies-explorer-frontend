@@ -16,18 +16,19 @@ function Movies({
   handleClickDelLike,
   isLoading,
   setIsLoading,
-  errorAllMovies
+  errorAllMovies,
+  isInputAllMovies,
+  setIsInputAllMovies
 }) {
 
   const [textSearchAllMovies, setTextSearchAllMovies] = useState("")
 
   //поиск
   const filterNameFilm = textSearchAllMovies ?
-    allMovies.filter(((name) => {
-      return !(name.nameRU && name.nameEN)
-        .toLowerCase().replace(/ /g, "")
-        .indexOf(textSearchAllMovies.toLowerCase().replace(/ /g, ""))
-    })) : []
+    allMovies.filter((name) => {
+      return ((name.nameEN.concat(name.nameRU)).toLowerCase())
+        .includes(textSearchAllMovies.toLowerCase())
+    }) : []
 
   //получение короткометражных фильмов 
   const listMovies = !onShortMovies
@@ -47,7 +48,9 @@ function Movies({
         onShortMovies={onShortMovies}
         handleShortMovies={handleShortMovies}
         setTextSearchAllMovies={setTextSearchAllMovies}
-        setAllMovies={setAllMovies} />
+        setAllMovies={setAllMovies}
+        isInputAllMovies={isInputAllMovies}
+        setIsInputAllMovies={setIsInputAllMovies} />
       <MoviesCardList
         errorMovies={errorAllMovies}
         isLoading={isLoading}

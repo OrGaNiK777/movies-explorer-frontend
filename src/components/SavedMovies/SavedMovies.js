@@ -14,20 +14,22 @@ function SavedMovies({
   handleClickDelLike,
   isLoading,
   setIsLoading,
-  errorSaveMovies
+  errorSaveMovies,
+  isInputSaveMovies,
+  setIsInputSaveMovies
 }) {
 
   const [textSearchSaveMovies, setTextSearchSaveMovies] = useState("")
 
   //поиск
-  const filterNameFilm =  textSearchSaveMovies ?
-    saveMovies.filter(((name) => {
-      return !((name.nameRU && name.nameEN) === undefined ? "" : (name.nameRU && name.nameEN))
-        .toLowerCase().replace(/ /g, "")
-        .indexOf(textSearchSaveMovies.toLowerCase().replace(/ /g, ""))
-    })) : saveMovies
+  const filterNameFilm = textSearchSaveMovies ?
+    saveMovies.filter((name) => {
+      return ((name.nameEN.concat(name.nameRU)).toLowerCase())
+        .includes(textSearchSaveMovies.toLowerCase())
+    }) : saveMovies
+
   //получение короткометражных фильмов 
-  const listMovies =  !onShortMovies
+  const listMovies = !onShortMovies
     ?
     filterNameFilm.filter(
       ((item) => {
@@ -45,7 +47,9 @@ function SavedMovies({
         handleShortMovies={handleShortMovies}
         handleReceivingShortMovies={handleReceivingShortMyMovies}
         allMovies={saveMovies}
-        setTextSearchSaveMovies={setTextSearchSaveMovies} />
+        setTextSearchSaveMovies={setTextSearchSaveMovies}
+        isInputSaveMovies={isInputSaveMovies}
+        setIsInputSaveMovies={setIsInputSaveMovies} />
       <MoviesCardList
         errorMovies={errorSaveMovies}
         isLoading={isLoading}
