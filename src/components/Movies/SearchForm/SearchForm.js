@@ -7,9 +7,7 @@ import { useLocation } from 'react-router-dom';
 function SearchForm({
   handleReceivingSaveMovies,
   handleReceivingMovies,
-  inputValueAllMovies,
   setInputValueAllMovies,
-  inputValueSaveMovies,
   setInputValueSaveMovies,
   onShortMovies,
   handleShortMovies,
@@ -43,9 +41,9 @@ function SearchForm({
 
   const handleSubmit = (e) => {
     e.preventDefault();
-      if (location.pathname === '/movies') {
-      if (/[a-zA-Z0-9а-яёА-ЯЁ]/gi.test(inputValueAllMovies)) {
-        setTextSearchAllMovies(inputValueAllMovies)
+    if (location.pathname === '/movies') {
+      if (/[a-zA-Z0-9а-яёА-ЯЁ]/gi.test(valueInputAllMovies)) {
+        setTextSearchAllMovies(valueInputAllMovies)
         setErrorText('');
         handleReceivingMovies()
         setIsLoading(true)
@@ -55,8 +53,8 @@ function SearchForm({
     }
 
     if (location.pathname === '/saved-movies') {
-      if (/[a-zA-Z0-9а-яёА-ЯЁ]/gi.test(inputValueSaveMovies)) {
-        setTextSearchSaveMovies(inputValueSaveMovies)
+      if (/[a-zA-Z0-9а-яёА-ЯЁ]/gi.test(valueInputSaveMovies)) {
+        setTextSearchSaveMovies(valueInputSaveMovies)
         setErrorText('');
         handleReceivingSaveMovies()
         setIsLoading(true)
@@ -104,7 +102,7 @@ function SearchForm({
           required
           TextValid={errorText}
           classNameValid={errorText ? "searchForm__mes-error searchForm__mes-error_acvive" : "searchForm__mes-error"}
-          value={location.pathname === '/movies' ? valueInputAllMovies : valueInputSaveMovies}
+          defaultValue={location.pathname === '/movies' ? valueInputAllMovies : valueInputSaveMovies}
           onChange={handleInputChange}
         >
         </Input>

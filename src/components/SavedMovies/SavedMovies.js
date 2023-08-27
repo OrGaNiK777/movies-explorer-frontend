@@ -8,8 +8,6 @@ function SavedMovies({
   handleReceivingSaveMovies,
   handleClick,
   roundedVisibleCardCount,
-  inputValueSaveMovies,
-  setInputValueSaveMovies,
   onShortMovies,
   handleShortMovies,
   handleReceivingShortMyMovies,
@@ -43,8 +41,6 @@ function SavedMovies({
         setIsLoading={setIsLoading}
         handleReceivingMovies={handleReceivingSaveMovies}
         handleReceivingSaveMovies={handleReceivingSaveMovies}
-        inputValueSaveMovies={inputValueSaveMovies}
-        setInputValueSaveMovies={setInputValueSaveMovies}
         onShortMovies={onShortMovies}
         handleShortMovies={handleShortMovies}
         handleReceivingShortMovies={handleReceivingShortMyMovies}

@@ -59,9 +59,6 @@ function App() {
 
   const [isLoading, setIsLoading] = useState(false);
 
-  const [inputValueAllMovies, setInputValueAllMovies] = useState('');
-  const [inputValueSaveMovies, setInputValueSaveMovies] = useState('');
-
   const [isLogin, setIsLogin] = useState(null);
 
   //отправка данных для авторизация
@@ -329,8 +326,6 @@ function App() {
                   errorAllMovies={errorAllMovies}
                   isLoading={isLoading}
                   setIsLoading={setIsLoading}
-                  inputValueAllMovies={inputValueAllMovies}
-                  setInputValueAllMovies={setInputValueAllMovies}
                   handleReceivingMovies={handleReceivingMovies}
                   isLogin={isLogin}
                   setAllMovies={setAllMovies}
@@ -357,8 +352,6 @@ function App() {
                   errorSaveMovies={errorSaveMovies}
                   isLoading={isLoading}
                   setIsLoading={setIsLoading}
-                  inputValueSaveMovies={inputValueSaveMovies}
-                  setInputValueSaveMovies={setInputValueSaveMovies}
                   handleReceivingSaveMovies={handleReceivingSaveMovies}
                   isLogin={isLogin}
                   element={SavedMovies}
