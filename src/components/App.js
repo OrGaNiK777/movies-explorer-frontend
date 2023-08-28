@@ -97,6 +97,7 @@ function App() {
       .then((res) => {
         if (res) {
           handleLoginSubmit(email, password)
+          navigate("/movies");
         }
       })
       .catch((err) => {
