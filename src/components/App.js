@@ -1,5 +1,5 @@
 import './App.css';
-import { useEffect, useState } from "react";
+import { useEffect, useState, } from "react";
 import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
 
 import Header from "./Header/Header"
@@ -55,6 +55,7 @@ function App() {
   //----------------------------------------------------------
 
   const navigate = useNavigate();
+
   const location = useLocation()
 
   const [isLoading, setIsLoading] = useState(false);
@@ -72,7 +73,8 @@ function App() {
     apiAuth.authorize(email, password)
       .then(() => {
         handleTokenCheck()
-        navigate("/movies");
+        setTimeout(() => navigate("/movies"), 100)
+
       })
       .catch((err) => {
         console.log(err)
@@ -97,7 +99,6 @@ function App() {
       .then((res) => {
         if (res) {
           handleLoginSubmit(email, password)
-          navigate("/movies");
         }
       })
       .catch((err) => {
@@ -167,33 +168,37 @@ function App() {
   }
 
   //состояние checkbox ShortMovies
-  const [onShortMovies, setOnShortMovies] =
-    useState(JSON.parse(localStorage.getItem('onShortMovies')) ?
-      JSON.parse(localStorage.getItem('onShortMovies')) : false)
+
+  const [onShortMovies, setOnShortMovies] = useState(true)
+
   function handleShortMovies() {
     setOnShortMovies(!onShortMovies)
     localStorage.setItem('onShortMovies', JSON.stringify(!onShortMovies))
   }
 
+
   //отправка фильмов в сохраненные путем лайка
   const handleClickLike = async (movie) => {
     try {
       const film = await mainApi.postMovies(movie)
-
-      setSaveMovies([...saveMovies, film])
-    } catch (err) {
-      console.log(err)
-    }
+      if (film) {
+        setSaveMovies([...saveMovies, film])
+      }
+    } catch (err) { console.log(err) }
   }
 
   //удаление фильмов из сохраненных путем дизлайка
-  function handleClickDelLike(movie) {
-    mainApi.deleteMoviesById(movie._id)
-      .then(() => {
-        const newCard = saveMovies.filter((item) => item.movieId !== movie.movieId);
+  const handleClickDelLike = async (movie) => {
+    try {
+      await mainApi.deleteMoviesById(movie._id)
+      const newCard = saveMovies.filter((item) => item.movieId !== movie.movieId);
+      if (newCard) {
         setSaveMovies(newCard);
-      })
-      .catch((err) => console.log(err))
+      }
+    }
+    catch (err) {
+      console.log(err);
+    }
   }
 
   //выгрузка сохраненных фильмов с сервера
@@ -249,8 +254,6 @@ function App() {
       Promise.all([mainApi.getUserInfo()])
         .then(([data]) => {
           setCurrentUser(data)
-          handleReceivingSaveMovies()
-
         })
         .catch((error) => {
           console.log(error.message);
@@ -272,6 +275,7 @@ function App() {
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <div className='app'>
+
         <Header
           isLogin={isLogin} />
         <Routes>
@@ -305,7 +309,7 @@ function App() {
           <Route
             path="*"
             element={
-              <PageNotFound />
+              <PageNotFound navigate={navigate} />
             }
           ></Route>
           <Route
@@ -370,6 +374,7 @@ function App() {
                   onShortMovies={onShortMovies}
                   handleShortMovies={handleShortMovies}
                   handleClickDelLike={handleClickDelLike}
+                  setOnShortMovies={setOnShortMovies}
                 />
                 <Footer />
               </>

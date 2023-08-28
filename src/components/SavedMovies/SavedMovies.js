@@ -9,6 +9,7 @@ function SavedMovies({
   handleClick,
   roundedVisibleCardCount,
   onShortMovies,
+  setOnShortMovies,
   handleShortMovies,
   handleReceivingShortMyMovies,
   handleClickDelLike,
@@ -41,9 +42,9 @@ function SavedMovies({
     <>
       <SeachForm
         setIsLoading={setIsLoading}
-        handleReceivingMovies={handleReceivingSaveMovies}
         handleReceivingSaveMovies={handleReceivingSaveMovies}
         onShortMovies={onShortMovies}
+        setOnShortMovies={setOnShortMovies}
         handleShortMovies={handleShortMovies}
         handleReceivingShortMovies={handleReceivingShortMyMovies}
         allMovies={saveMovies}

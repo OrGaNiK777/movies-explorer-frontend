@@ -1,14 +1,12 @@
 import { useLocation } from 'react-router-dom';
 import "./MoviesCard.css"
-import { useEffect, useState } from 'react';
-
 
 function MovieCard({ movie, handleClickLike, saveMovies, handleClickDelLike }) {
   const location = useLocation()
 
-  const [onLike, setOnLike] = useState(false)
+  const isLiked = saveMovies.some((saveMovie) => saveMovie.movieId === movie.id);
 
-  const checkMovies = () => saveMovies.find((i) => (i.movieId === movie.id))
+  const checkMovies = saveMovies.find((i) => (i.movieId === movie.id))
 
   const timing = (duration) => {
     const hours = Math.floor(duration / 60);
@@ -17,35 +15,17 @@ function MovieCard({ movie, handleClickLike, saveMovies, handleClickDelLike }) {
     return hours === 0 ? `${minuts} м` : minuts === 0 ? `${hours} ч` : `${hours}ч ${minuts} м`
   };
 
-  const onAddMovie = () => {
-    handleClickLike(movie)
-    setOnLike(true)
-  };
-
-  const onDelMovie = () => {
-    const checkMovies1 = checkMovies()
-
-    handleClickDelLike(checkMovies1)
-    setOnLike(false)
-  };
+  function handleLikeClick() {
+    if (!isLiked) {
+      handleClickLike(movie);
+    } else {
+      handleClickDelLike(checkMovies);
+    }
+  }
 
   const onDelSaveMovie = () => {
     handleClickDelLike(movie)
   }
-
-  const searchMyMovie = () => {
-    const checkMovies1 = checkMovies()
-    if (checkMovies1) {
-      setOnLike(true);
-    } else {
-      setOnLike(false);
-    }
-  };
-
-  useEffect(() => {
-    searchMyMovie();
-    // eslint-disable-next-line
-  }, []);
 
   return (
     <article className="moviesCard" >
@@ -58,8 +38,8 @@ function MovieCard({ movie, handleClickLike, saveMovies, handleClickDelLike }) {
         <div className='moviesCard__container-description'>
           <h2 className='moviesCard__title'>{movie.nameRU}</h2>
           <button id="button" type='button' className={`moviesCard__likes 
-          ${onLike ? "moviesCard__likes_active" : ""}`} onClick={
-              onLike ? onDelMovie : onAddMovie} />
+          ${isLiked ? "moviesCard__likes_active" : ""}`} onClick={
+              handleLikeClick} />
           <p className='moviesCard__duration'>{timing(movie.duration)}</p>
         </div> :
         <div className='moviesCard__container-description'>

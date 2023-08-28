@@ -1,5 +1,5 @@
 //const url = "https://api.movies.exporer.diplom.nomoreparties.co"
-const url = "http://localhost:5000"
+const url = "http://localhost:4000"
 const headers = {
 	"Content-Type": "application/json"
 }
@@ -63,12 +63,13 @@ export const postMovies = async (data) => {
 }
 
 //Удаление фильма
-export function deleteMoviesById(id) {
-	return fetch(`${url}/movies/${id}`, {
+export async function deleteMoviesById(id) {
+	const res = await fetch(`${url}/movies/${id}`, {
 		method: "DELETE",
 		headers: headers,
 		credentials: 'include',
-	}).then((res) => checkingResponse(res));
+	});
+	return checkingResponse(res);
 }
 
 //выход с сайта

@@ -18,7 +18,10 @@ function Movies({
   setIsLoading,
   errorAllMovies,
   isInputAllMovies,
-  setIsInputAllMovies
+  setIsInputAllMovies,
+  likeStatus,
+  dislikeStatus,
+  setOnShortMovies
 }) {
 
   const [textSearchAllMovies, setTextSearchAllMovies] = useState("")
@@ -46,8 +49,10 @@ function Movies({
         setIsLoading={setIsLoading}
         handleReceivingMovies={handleReceivingMovies}
         onShortMovies={onShortMovies}
+        setOnShortMovies={setOnShortMovies}
         handleShortMovies={handleShortMovies}
         setTextSearchAllMovies={setTextSearchAllMovies}
+        allMovies={allMovies}
         setAllMovies={setAllMovies}
         isInputAllMovies={isInputAllMovies}
         setIsInputAllMovies={setIsInputAllMovies} />
@@ -58,6 +63,8 @@ function Movies({
         handleClick={handleClick}>
         {listMovies?.slice(0, roundedVisibleCardCount).map((movie) => (
           <MoviesCard
+            likeStatus={likeStatus}
+            dislikeStatus={dislikeStatus}
             saveMovies={saveMovies}
             movie={movie}
             key={movie.id}
