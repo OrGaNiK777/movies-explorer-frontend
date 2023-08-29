@@ -1,74 +1,135 @@
 import "./Profile.css"
 import Input from '../Input/Input'
-import { useState } from 'react'
+import { useState, useContext, useEffect } from 'react'
+import CurrentUserContext from '../../contexts/CurrentUserContext';
+import { useFormValid } from '../../hooks/useFormValid';
 
 
-function Profile({ handleSubmit }) {
+function Profile({ buttonExit, handleUpdateUser, isLoading, isSuccessUpdate, updateUserStatus }) {
 
-  const [isEditInput, setEditInput] = useState(false);
+  const {
+    handleChange,
+    errors,
+    isValid,
+    isValidName,
+    isValidEmail,
+    values,
+    setValues,
+    resetForm,
+    setIsValidName,
+    setIsValidEmail,
+    setIsValid,
 
-  function toggleEditInput() {
-    setEditInput(!isEditInput)
+  } = useFormValid();
+
+
+  const [enableButton, setEnableButton] = useState(false)
+
+
+  function toggleButton() {
+    setEnableButton(true)
   }
 
-  const error = false
-  const openValid = error ? "profile__mes-error profile__mes-error_acvive" : "profile__mes-error"
-  const textError = error ? "Есть проблема" : "Проблем нет"
+  const { name, email } = useContext(CurrentUserContext)
 
-  const [isEdit, setEdit] = useState(true);
-
-  function toggleEdit() {
-    setEdit(!isEdit)
+  function handleSubmit(event) {
+    event.preventDefault();
+    handleUpdateUser(values.name, values.email);
   }
+  useEffect(() => {
+    resetForm();
+    setValues({
+      name,
+      email,
+    })
+    if (isSuccessUpdate) {
+      setEnableButton(false)
+    }
+    // eslint-disable-next-line
+  }, [setValues, resetForm, handleUpdateUser]);
 
-  function modeEdit() {
-    return (
-      isEdit
-        ? <div className={`profile__behaviour`}>
-          <p className='profile__edit' onClick={() => { toggleEdit(); toggleEditInput() }}>Редактировать</p>
-          <a className='profile__signout' href='/signout'>Выйти из аккаунта</a>
-        </div >
-        : <button className={`profile__button-submit`} type="submit" >
-          Сохранить
-        </button >
-    );
-  }
+  useEffect(() => {
+    if (isSuccessUpdate) {
+      setEnableButton(false)
+    }
+    // eslint-disable-next-line
+  }, [handleUpdateUser]);
 
-  const authName = 'Виталий'
-  const authEmail = "pochta@yandex.ru"
+  useEffect(() => {
+    if (values.email === email && isValidName === true) {
+      setIsValidEmail(true);
+      setIsValid(true)
+    }
+
+    if (values.name === name && isValidEmail === true) {
+      setIsValidName(true);
+      setIsValid(true)
+    }
+
+    if (values.name === name && values.email === email) {
+      setIsValidEmail(false);
+      setIsValidName(false);
+      setIsValid(false);
+    }
+    // eslint-disable-next-line
+  }, [isValidName, isValidEmail, values, handleUpdateUser, setIsValid]);
 
   return (
     <section className="profile">
-      <h2 className="profile__title">{`Привет, ${authName}!`}</h2>
+      <h2 className="profile__title">{`Привет${name ? ", " + name : ""}!`}</h2>
       <form
         className="profile__form"
         name="profileForm"
-        noValidate
         onSubmit={handleSubmit}
-      ><div className='profile__input-element'>
+      >
+        <div className='profile__input-element'>
           <p className='profile__field'>Имя</p>
           <Input
+            id="name"
             type="text"
-            classNameInput={isEditInput ? "profile__input profile__input_active" : "profile__input"}
-            classNameValid={openValid}
-            placeholder={authName}
-            TextValid={textError}
-          ></Input>
+            name='name'
+            classNameInput={errors.name ? "profile__input profile__input_error" : "profile__input"}
+            placeholder={name}
+            minLength="2"
+            maxLength="30"
+            value={values.name || ''}
+            onChange={handleChange}
+            disabled={!enableButton}
+          />
         </div>
         <p className='profile__line'></p>
         <div className='profile__input-element'>
           <p className='profile__field'>E-mail</p>
           <Input
+            id='email'
             type="email"
-            classNameInput={isEditInput ? "profile__input profile__input_active" : "profile__input"}
-            classNameValid={openValid}
-            placeholder={authEmail}
-            TextValid={textError}
-          ></Input>
+            name='email'
+            classNameInput={errors.email ? "profile__input profile__input_error" : "profile__input"}
+            placeholder={email}
+            value={values.email || ''}
+            onChange={handleChange}
+            disabled={!enableButton}
+          />
         </div>
-        {modeEdit()}
+        <span className={errors.email || errors.name ? "profile__mes-error" : isSuccessUpdate ? "profile__mes-error profile__mes_good" : "profile__mes-error"}>
+          {errors.name ? errors.name : errors.email ? errors.email : updateUserStatus}
+        </span>
+        {!enableButton
+          ? <div className={`profile__behaviour`}>
+            <p className='profile__edit' onClick={() => { toggleButton() }}>Редактировать</p>
+            <p className='profile__signout' onClick={buttonExit}>Выйти из аккаунта</p>
+          </div >
+          : <button className={
+            isValid === false || isValidName === false || isValidEmail === false || isLoading
+              ? "profile__button-submit profile__button-submit_disabled"
+              : "profile__button-submit"}
+            type="submit"
+            onClick={handleSubmit}
+            disabled={isValid === false || isValidName === false || isValidEmail === false || isLoading}>
+            {isLoading ? "Сохранение..." : "Сохранить"}
+          </button >}
       </form>
-    </section>
+    </section >
   )
 }
 

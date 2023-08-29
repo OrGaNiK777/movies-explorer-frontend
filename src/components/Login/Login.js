@@ -1,47 +1,72 @@
 import Input from "../Input/Input";
 import PageWithForm from "../PageWithForm/PageWithForm"
 import { Link } from 'react-router-dom';
+import { useFormValid } from '../../hooks/useFormValid';
 
+export default function Login({ isLoading, handleLoginSubmit, updateLoginStatus }) {
 
-export default function Login({ isLoading }) {
-  const textValid = false
-  const textValid1 = textValid ? textValid : "Проблем нет"
-  const openValid = !textValid1 ? "access-page__mes-error access-page__mes-error_acvive" : "access-page__mes-error"
+  const {
+    handleChange,
+    values,
+    errors,
+    isValid,
+    isValidEmail
+
+  } = useFormValid();
+
+  function handleSubmit(e) {
+    // Запрещаем браузеру переходить по адресу формы
+    e.preventDefault();
+    handleLoginSubmit(
+      values.email,
+      values.password);
+  }
   return (
     <>
       <PageWithForm
         title="Рады видеть!"
         name="login"
         nameBtn={isLoading ? "Вход..." : "Войти"}
+        handleSubmit={handleSubmit}
         alternative={
           <p className="access-page__alternative-text">
             Ещё не зарегистрированы?
             <Link
               className="access-page__alternative-link"
               to="/signup"
-
             >
               {" "}
               Регистрация
             </Link>
           </p>
         }
+        statusBtn={isValid === false || isValidEmail === false || isLoading}
+        disabled={isValid === false || isValidEmail === false || isLoading}
       >
         <Input
+          id="email"
           type="email"
-          classNameInput="access-page__input"
-          classNameValid={openValid}
+          name='email'
+          classNameInput={errors.email ? "access-page__input access-page__input_error" : "access-page__input"}
+          classNameValid={errors.email ? "access-page__mes-error access-page__mes-error_acvive" : "access-page__mes-error"}
           classNameInputСontent="access-page__input-content"
           InputСontent="E-mail"
-          TextValid={textValid1}
+          TextValid={errors.email}
+          onChange={handleChange}
+          placeholder="index@mail.ru"
         ></Input>
         <Input
-          type="text"
-          classNameInput="access-page__input"
-          classNameValid={openValid}
+          id="password"
+          type="password"
+          name="password"
+          minLength="8"
+          classNameInput={errors.password ? "access-page__input access-page__input_error" : "access-page__input"}
+          classNameValid={errors.password || updateLoginStatus ? "access-page__mes-error access-page__mes-error_acvive" : "access-page__mes-error"}
           classNameInputСontent="access-page__input-content"
           InputСontent="Пароль"
-          TextValid={textValid1}
+          TextValid={errors.password ? errors.password : updateLoginStatus}
+          onChange={handleChange}
+          placeholder="Введите пароль"
         ></Input>
       </PageWithForm >
     </>

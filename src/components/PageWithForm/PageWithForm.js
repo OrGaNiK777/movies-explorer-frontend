@@ -7,6 +7,8 @@ function PageWithForm({
   nameBtn,
   children,
   alternative,
+  statusBtn,
+  disabled
 }) {
   return (
     <section className="access-page">
@@ -18,10 +20,14 @@ function PageWithForm({
         onSubmit={handleSubmit}
       >
         {children}
-        <button className="access-page__button-submit" type="submit">
+        <button
+          className={statusBtn ? "access-page__button-submit  access-page__button-submit_disabled" : "access-page__button-submit"}
+          type="submit"
+          disabled={disabled}>
           {nameBtn}
         </button>
-        <div className="access-page__alternative">
+        <div className="access-page__alternative"
+        >
           {alternative}
         </div>
       </form>

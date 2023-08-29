@@ -1,15 +1,76 @@
 import MoviesCardList from './MoviesCardList/MoviesCardList';
 import SeachForm from "./SearchForm/SearchForm";
+import MoviesCard from './MoviesCard/MoviesCard'
+import { useState } from 'react';
 
-// import Preloader from './Preloader/Preloader'
+function Movies({
+  saveMovies,
+  allMovies,
+  setAllMovies,
+  handleReceivingMovies,
+  handleClick,
+  roundedVisibleCardCount,
+  onShortMovies,
+  handleShortMovies,
+  handleClickLike,
+  handleClickDelLike,
+  isLoading,
+  setIsLoading,
+  errorAllMovies,
+  isInputAllMovies,
+  setIsInputAllMovies,
+  likeStatus,
+  dislikeStatus,
+  setOnShortMovies
+}) {
 
-function Movies() {
+  const [textSearchAllMovies, setTextSearchAllMovies] = useState("")
 
+  //поиск
+  const filterNameFilm = textSearchAllMovies ?
+    allMovies.filter((name) => {
+      return ((name.nameEN.concat(name.nameRU)).toLowerCase())
+        .includes(textSearchAllMovies.toLowerCase())
+    }) : []
+
+  //получение короткометражных фильмов 
+  const listMovies = !onShortMovies
+    ?
+    filterNameFilm.filter(
+      ((item) => {
+        return item.duration < "40"
+      }))
+    :
+    filterNameFilm
 
   return (
     <>
-      <SeachForm />
-      <MoviesCardList />
+      <SeachForm
+        setIsLoading={setIsLoading}
+        handleReceivingMovies={handleReceivingMovies}
+        onShortMovies={onShortMovies}
+        setOnShortMovies={setOnShortMovies}
+        handleShortMovies={handleShortMovies}
+        setTextSearchAllMovies={setTextSearchAllMovies}
+        allMovies={allMovies}
+        setAllMovies={setAllMovies}
+        isInputAllMovies={isInputAllMovies}
+        setIsInputAllMovies={setIsInputAllMovies} />
+      <MoviesCardList
+        errorMovies={errorAllMovies}
+        isLoading={isLoading}
+        listMovies={listMovies}
+        handleClick={handleClick}>
+        {listMovies?.slice(0, roundedVisibleCardCount).map((movie) => (
+          <MoviesCard
+            likeStatus={likeStatus}
+            dislikeStatus={dislikeStatus}
+            saveMovies={saveMovies}
+            movie={movie}
+            key={movie.id}
+            handleClickLike={handleClickLike}
+            handleClickDelLike={handleClickDelLike}
+          />))}</MoviesCardList>
     </>
   );
 }

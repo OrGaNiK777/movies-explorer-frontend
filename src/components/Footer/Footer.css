@@ -76,13 +76,17 @@
 @media screen and (max-width: 767px) {
 	.footer__paragraph_2 {
 		grid-area: paragraph_2;
-
 	}
 }
 
 .footer__paragraph_3 {
 	margin-left: 887px;
 	margin-top: 20px;
+	text-decoration: none;
+}
+
+.footer__paragraph_3:hover {
+	opacity: 0.7;
 }
 
 @media screen and (max-width: 1279px) {
@@ -102,6 +106,11 @@
 
 .footer__paragraph_4 {
 	margin-top: 20px;
+	text-decoration: none;
+}
+
+.footer__paragraph_4:hover {
+	opacity: 0.7;
 }
 
 @media screen and (max-width: 767px) {

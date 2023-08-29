@@ -6,7 +6,7 @@ import HeaderLogin from "./HeaderLogin/HeaderLogin"
 import HeaderNotLogin from "./HeaderNotLogin/HeaderNotLogin"
 
 
-function Header() {
+function Header({ isLogin }) {
   return (
     <Routes>
       <Route
@@ -17,8 +17,8 @@ function Header() {
       ></Route>
       <Route
         path="/"
-        element={
-          <HeaderNotLogin />
+        element={isLogin ?
+          <HeaderAuth styleBack={{ backgroundColor: "#073042" }} /> : <HeaderNotLogin />
         }
       ></Route>
       <Route
@@ -45,7 +45,7 @@ function Header() {
           <HeaderAuth />
         }
       ></Route>
-    </Routes>
+    </Routes >
 
   );
 }

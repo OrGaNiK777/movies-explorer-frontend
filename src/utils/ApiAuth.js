@@ -1,5 +1,5 @@
+const url = "https://api.movies.exporer.diplom.nomoreparties.co";
 //const url = "http://localhost:4000";
-const url = "https://api.mesto.organik.nomoredomains.xyz";
 const headers = {
 	Accept: "application/json",
 	"Content-Type": "application/json",
@@ -13,35 +13,30 @@ function checkingResponse(res) {
 	return Promise.reject(`Ошибка: ${res.status}`);
 }
 
-export const register = (password, email) => {
-	return fetch(`${url}/signup`, {
+export const register = async (email, password, name) => {
+	const res = await fetch(`${url}/signup`, {
 		method: "POST",
 		headers: headers,
-		body: JSON.stringify({ password, email }),
-	}).then((res) => checkingResponse(res));
+		body: JSON.stringify({ password, email, name }),
+	});
+	return checkingResponse(res);
 };
 
-export const authorize = (password, email) => {
-	return fetch(`${url}/signin`, {
+export const authorize = async (email, password) => {
+	const res = await fetch(`${url}/signin`, {
 		method: "POST",
 		headers: headers,
 		credentials: 'include',
-		body: JSON.stringify({ password, email }),
-	}).then((res) => checkingResponse(res));
+		body: JSON.stringify({ email, password }),
+	});
+	return checkingResponse(res);
 };
 
-export const checkToken = () => {
-	return fetch(`${url}/users/me`, {
+export const checkToken = async () => {
+	const res = await fetch(`${url}/users/me`, {
 		method: "GET",
 		headers: headers,
 		credentials: 'include',
-	}).then((res) => { return checkingResponse(res) });
+	});
+	return checkingResponse(res);
 };
-
-export const loginOut = () => {
-	return fetch(`${url}/signout`, {
-		method: "DELETE",
-		headers: headers,
-		credentials: 'include',
-	}).then((res) => { return checkingResponse(res) });
-}

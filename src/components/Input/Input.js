@@ -1,7 +1,6 @@
 function Input({
   name,
   placeholder,
-  handleChange,
   value,
   maxLength,
   minLength,
@@ -12,8 +11,12 @@ function Input({
   type,
   useRef,
   classNameInputСontent,
-  InputСontent
+  InputСontent,
+  defaultValue,
+  onChange,
+  disabled
 }) {
+
   return (
     <><p className={classNameInputСontent}>{InputСontent}</p>
       <input
@@ -22,13 +25,14 @@ function Input({
         name={name}
         type={type}
         placeholder={placeholder}
+        onChange={onChange}
         value={value}
-        onChange={handleChange}
+        required
         maxLength={maxLength}
         minLength={minLength}
-        required
-        ref={useRef}>
-      </input>
+        defaultValue={defaultValue}
+        disabled={disabled}
+      />
       <span className={classNameValid}>{TextValid}</span>
     </>
   );
