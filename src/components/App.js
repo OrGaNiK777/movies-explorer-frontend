@@ -73,8 +73,7 @@ function App() {
     apiAuth.authorize(email, password)
       .then(() => {
         handleTokenCheck()
-        setTimeout(() => navigate("/movies"), 100)
-
+        navigate("/")
       })
       .catch((err) => {
         console.log(err)
@@ -157,6 +156,7 @@ function App() {
       .then((item) => {
         setAllMovies(item)
         localStorage.setItem('allMovies', JSON.stringify(item))
+        console.log(allMovies)
       })
       .catch((err) => {
         console.log(err)
